@@ -1,16 +1,41 @@
 ---
 layout: post
-title:  "Dummy Post"
-date:   2015-04-18 08:43:59
-author: Ben Centra
-categories: Dummy
+title:  "학습목표와 회차별 계획"
+date:   2018-01-09 00:11:59
+author: 이상현
+categories: 로컬(모각코)
 ---
 
-This is just a dummy post. Lorem ipsum and all the rest.
+# [](#목표)목표
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+이번 2018년 **모각코** 활동에서 [인프런](https://www.inflearn.com/) 강의를 수강하면서 **React를 이용한 Web service와 Native App** 을 만들어본다. 이를 통해 React에 대한 학습이 어느 정도 진행되었다면, 개인적으로 구상한 **App의 proto type** 을 React로 만들어보는 것을 최종 목표로 한다.
+
+## [](#1회차)1회차
+
+> 리액트 네이티브 앱으로 날씨앱 만들기 강좌를 수강 (1/2)
+>
+> 구상중인 앱을 소프트웨어공학방법론을 적용하여 간략히 분석 및 설계
+
+## [](#2회차)2회차
+
+> 리액트 네이티브 앱으로 날씨앱 만들기 강좌를 수강 (2/2)
+>
+> 구상중인 앱을 소프트웨어공학방법론을 적용하여 간략히 분석 및 설계
+
+## [](#3회차)3회차
+
+> 구상중인 앱을 소프트웨어공학방법론을 적용하여 간략히 분석 및 설계
+>
+> UI 명세서 작성, 프로젝트 초기화 작업 진행
+
+## [](#4회차)4회차
+
+> 어플리케이션의 프로토타입 구현
+
+## [](#5회차)5회차
+
+> 어플리케이션의 프로토타입 구현
+
+## [](#6회차)6회차
+
+> 코드 리팩토링 및 UI 개선
