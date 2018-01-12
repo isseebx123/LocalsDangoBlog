@@ -9,12 +9,12 @@ exclude:
   - "/vendor/"
 
 # Site settings
-title: Centrarium
-subtitle: "A simple yet classy theme for your Jekyll website or blog"
-email: blcentra@gmail.com
-name: Ben Centra
+title: isseebx123 개인블로그
+subtitle: "isseebx123의 개인 개발용 블로그입니다."
+email: lsseebx38@gmail.com
+name: Sanghyun Lee
 description: >
-  A simple yet classy theme for your Jekyll website or blog.
+  isseebx123의 개인 개발용 블로그입니다.
 # Base URL of site (i.e. /blog). It should always start with a slash,
 # and never end with a slash. Set it to a blank value if hosting at the
 # root of your server.
@@ -72,29 +72,29 @@ descriptions:
 social:
   - name: Twitter
     icon: twitter
-    username: TheBenCentra
-    url: https://twitter.com/TheBenCentra
+    username: isseebx123
+    url: https://twitter.com/
     desc: Follow me on Twitter
     share: true
 
   - name: Facebook
     icon: facebook
-    username: thebencentra
+    username: isseebx123
     url:
     desc: Friend me on Facebook
     share: true
 
   - name: GitHub
     icon: github
-    username: bencentra
-    url: https://github.com/bencentra
+    username: isseebx123
+    url: https://github.com/isseebx123
     desc: Fork me on GitHub
     share: false
 
   - name: LinkedIn
     icon: linkedin
-    username: Ben Centra
-    url: https://www.linkedin.com/pub/ben-centra/47/769/60a
+    username: isseebx123
+    url: https://www.linkedin.com/
     desc: Connect with me on LinkedIn
     share: true
 
@@ -193,6 +193,6 @@ protocols:
 
     twitter_image: "/assets/logo.png"
 
-    os_repo: "https://github.com/bencentra/centrarium.com"
+    os_repo: "https://github.com/isseebx/LocalsDangoBlog"
     os_rcs_type: "git"
-    os_src: "git@github.com:bencentra/centrarium.com.git"
+    os_src: "git@github.com:bencentra/LocalsDangoBlog.git"
