@@ -4,10 +4,12 @@ title: About
 permalink: /about/
 ---
 
-<img src="{{ site.baseurl }}/assets/profile-placeholder.gif" title="Profile Picture" class="profile">
+<img src="{{ site.baseurl }}/assets/Dango.jpeg" title="Profile Picture" class="profile">
 
-Centrarium is a custom theme for Jekyll, made by [Ben Centra][bencentra] for his own blog. He'd be humbled if you liked it enough to use it as well! Installation and configuration instructions can be found in the [GitHub repository](https://github.com/bencentra/centrarium).
+안녕하세요. 충남대학교 컴퓨터공학과 재학중인 13학번 이상현입니다. 이번 블로그는 컴퓨터공학과 소동아리 사업인 모각코에서 Local그룹의 개인 개발용 블로그입니다. 
 
-This page is a good place to write about yourself, your project, your product, or whatever it is your site is for. You can replace the image above, or you can get rid of it entirely.
+Hello. I am Sanghyun Lee, a student at Chungnam National University. This blog is a blog for the personal development of the local group at Mokakco, a computer engineering's small club.
 
-You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/). And you can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+[GitHub]: https://github.com/isseebx123
+[GitHub Repository]: https://github.com/isseebx123/LocalsDangoBlog
+[Local's representative Repository]: https://github.com/isseebx123/Local

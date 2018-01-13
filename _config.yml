@@ -9,8 +9,8 @@ exclude:
   - "/vendor/"
 
 # Site settings
-title: isseebx123 개인블로그
-subtitle: "isseebx123의 개인 개발용 블로그입니다."
+title: 18' 모각코 Local그룹 개인 블로그
+subtitle: "안녕하세요. isseebx123의 개인 개발용 블로그입니다."
 email: lsseebx38@gmail.com
 name: Sanghyun Lee
 description: >
@@ -20,7 +20,7 @@ description: >
 # root of your server.
 baseurl: "/LocalsDangoBlog" # the subpath of your site, e.g. /blog/
 url: "https://github.com/isseebx123/LocalsDangoBlog" # the base hostname & protocol for your site # http://isseebx.github.io
-cover: "/assets/header_image.jpg"
+cover: "/assets/header_img.jpg"
 logo: "/assets/logo.png"
 
 # Build settings
