@@ -10,6 +10,8 @@ categories: 로컬(모각코)
 
 이번 2018년 **모각코** 활동에서 [인프런](https://www.inflearn.com/) 강의를 수강하면서 **React를 이용한 Web service와 Native App** 을 만들어본다. 이를 통해 React에 대한 학습이 어느 정도 진행되었다면, 개인적으로 구상한 **App의 proto type** 을 React로 만들어보는 것을 최종 목표로 한다.
 
+---
+
 ## [](#1회차)1회차
 
 > 리액트 네이티브 앱으로 날씨앱 만들기 강좌를 수강 (1/2)
