@@ -22,18 +22,18 @@ categories: 개인공부
 
 ## 2. 휴대폰의 gps를 통해 위치정보를 받아오기
 
-> ![frame](/assets/postimages/20180113/geolocation.png)
+<img src="{{ site.baseurl }}/assets/postimages/20180113/geolocation.png">
 
 ## 3. 위치정보를 이용하여 OpenWeatherMap의 [Weather API](http://openweathermap.org/api)를 사용하여 날씨정보를 받아오기
 
 ## 4. 받아온 날씨정보를 어플에 적절히 사용하기
 
-> ![frame](/assets/postimages/20180113/cloud.png)
->
-> ![frame](/assets/postimages/20180113/mist.png)
+<img src="{{ site.baseurl }}/assets/postimages/20180113/cloud.png">
+
+<img src="{{ site.baseurl }}/assets/postimages/20180113/mist.png">
 
 ## 5. 완성된 어플을 standalone app로 배포하기
 
-> ![frame](/assets/postimages/20180113/BuildingStandaloneApp.png)
->
-> ![frame](/assets/postimages/20180113/BuildCompleteLog.png)
+<img src="{{ site.baseurl }}/assets/postimages/20180113/BuildingStandaloneApp.png">
+
+<img src="{{ site.baseurl }}/assets/postimages/20180113/BuildCompleteLog.png">
