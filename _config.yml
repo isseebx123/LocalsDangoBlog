@@ -21,7 +21,7 @@ description: >
 baseurl: "/LocalsDangoBlog" # the subpath of your site, e.g. /blog/
 url: "https://github.com/isseebx123/LocalsDangoBlog" # the base hostname & protocol for your site # http://isseebx.github.io
 cover: "/assets/header_img.jpg"
-logo: "/assets/logo.png"
+logo: "/assets/Dango.jpeg"
 
 # Build settings
 markdown: kramdown
