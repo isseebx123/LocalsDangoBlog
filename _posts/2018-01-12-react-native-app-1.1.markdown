@@ -27,7 +27,8 @@ categories: 개인공부
 ## 2. Android에서 Expo App 설치하기
 
 > error 502 발생.
-- echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+- echo fs.inotify.max_user_watches=524288
+- sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 - [참조](https://forums.expo.io/t/packager-starts-then-stops-silently/3435/3)
 
 ## 3. Android Emulator 설치 (옵션)
@@ -38,7 +39,7 @@ categories: 개인공부
 
 ## 4. [Snack](https://snack.expo.io/) 이용 (옵션)
 
-> 에뮬레이터의 웹사이트 버전 같은 것임. 
+> 에뮬레이터의 웹사이트 버전 같은 것임.
 
 ---
 
