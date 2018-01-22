@@ -81,27 +81,35 @@ class Codelab extends React.Component {
 모든 리액트 컴포넌트는 렌더 메소드를 가지는데, render 메소드는 컴포넌트가 어떻게 생길지 정의를 해준다.
 
 var a = (
+    ~~~
     <div>
       Welcome to <b>React</b>
     </div>
+    ~~~
   );
 JSX에서는 위와같이 xml과 비슷하게 html코드를 작성할 수 있다.
 
 html코드
+~~~
 <div id="root"></div>
+~~~
 
 JS코드
 class Codelab extends React.Component {
   render() {
     return (
+      ~~~
       <div>Codelab Text</div>
+      ~~~
       );
   }
 }
 class App extends React.Component {
   render() {
     return (
+        ~~~
         <Codelab/>
+        ~~~
       );
   }
 }
@@ -113,10 +121,12 @@ ReactDOM.render(<App/>, document.getElementById('root'));
 <pre>
 render() {
   return (
+      ~~~
       <div>
         <h1>Hi</h1>
         <h1>Bye</h1>
       </div>
+      ~~~
     );
 }
 컴포넌트에서 여러 element를 렌더링 할때, 하나의 container element가 이를 모두 포함하는 형태가 되어야 한다.
@@ -124,7 +134,9 @@ render() {
 render() {
   let text = "hello";
   return (
+    ~~~
       <div>{text}</div>
+      ~~~
     );
 }
 JSX안에서 JavaScript를 표현하는 방법은 {}로 wrapping을 하면 된다.
@@ -138,15 +150,19 @@ class Codelab extends React.Component {
     };
 
     return (
+      ~~~
         <div style={styleV}>{text}</div>
+        ~~~
       );
   }
 }
 JSX안에서 style을 설정할때는 string형식을 사용하지 않고 key가 CamelCase인 객체가 사용된다. (ex) background-Color X)
 
+~~~
 <div>
 { /*it's comment*/ }
 </div>
+~~~
 JSX에서 주석을 작성할 때는 { /*...*/ }과 같이 작성을 한다.
 </pre>
 
@@ -160,17 +176,21 @@ this.props.children은 기본적으로 갖고있는 props로서, <Cpnt>여기에
 class Codelab extends React.Component {
   render() {
     return (
+      ~~~
         <div>
           <h1>Hello {this.props.name}</h1>
           <div>{this.props.children}</div>
         </div>
+        ~~~
       );
   }
 }
 class App extends React.Component {
   render() {
     return (
+      ~~~
         <Codelab name="velo">여기에 있는 값이 들어간다.</Codelab>
+        ~~~
       );
   }
 }
@@ -180,7 +200,9 @@ ReactDOM.render(<App/>, document.getElementById('root'));
 class App extends React.Component {
   render() {
     return (
+      ~~~
         <Codelab name={this.props.name}>{this.props.children}</Codelab>
+        ~~~
       );
   }
 }
@@ -190,7 +212,9 @@ ReactDOM.render(<App = name="velo">여기에 있는 값이 들어간다.</App>, 
 class App extends React.Component {
   render() {
     return (
+      ~~~
         <div>{this.props.value}</div>
+        ~~~
       );
   }
 }
