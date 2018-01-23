@@ -185,7 +185,6 @@ class Codelab extends React.Component {
           <h1>Hello {this.props.name}</h1>
           <div>{this.props.children}</div>
         </div>
-        {% endhighlight %}
       );
   }
 }
