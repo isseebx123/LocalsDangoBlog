@@ -35,25 +35,23 @@ categories: 로컬(모각코)
 
 ## 2-1편. Codepen 설정, ES6 클래스
 
-<code>
+{% highlight sh %}
 class Polygon {
   constructor(hegiht, width) {
     this.height = height;
     this.width = width;
   }
 }
-</code>
+{% endhighlight %}
 자바스크립트 클래스안에서는 메소드만 정의가능하고, 변수를 사용하고 싶다면 위처럼 생성자를 통해 initialize를 해야한다.
 
-<code>
+{% highlight sh %}
 var p = new Polygon();
 class Polygon {}
-</code>
-<pre>
+{% endhighlight %}
 위와 같이 클래스 선언하기도 전에 클래스를 사용하면 레퍼런스 에러가 발생한다.
-</pre>
 
-<code>
+{% highlight sh %}
 class Polygon {
   constructor(hegiht, width) {
     this.height = height;
@@ -67,44 +65,44 @@ class Polygon {
     return Math.sqrt(dx*dx + dy*dy);
   }
 }
-</code>
+{% endhighlight %}
 위와 같이 메소드를 정적으로 선언할 수 있다. 이렇게 하면 클래스를 생성하지 않고도 메소드를 사용할 수 있다는 차이점이 있다.
 
-<code>
+{% highlight sh %}
 class Codelab extends React.Component {
 
 }
-</code>
+{% endhighlight %}
 extends 키워드를 통해 상속을 할 수 있다. 리액트에서는 컴포넌트를 만들때 React.Component를 상속한다. 상속을 했을때 super키워드를 통해 상위 클래스에서 정의된 것에 접근할 수 있다.
 
 ## 2-2편. JSX의 특징
 
 ### 컴포넌트 생성하고 렌더링해보기
-<code>
+{% highlight sh %}
 class Codelab extends React.Component {
   render() {
 
   }
 }
-</code>
+{% endhighlight %}
 모든 리액트 컴포넌트는 렌더 메소드를 가지는데, render 메소드는 컴포넌트가 어떻게 생길지 정의를 해준다.
 
-<code>
+{% highlight sh %}
 var a = (
     <div>
       Welcome to <b>React</b>
     </div>
   );
-</code>
+{% endhighlight %}
 JSX에서는 위와같이 xml과 비슷하게 html코드를 작성할 수 있다.
 
 html코드
-<code>
+{% highlight sh %}
 <div id="root"></div>
-</code>
+{% endhighlight %}
 
 JS코드
-<code>
+{% highlight sh %}
 class Codelab extends React.Component {
   render() {
     return (
@@ -120,11 +118,11 @@ class App extends React.Component {
   }
 }
 ReactDOM.render(<App/>, document.getElementById('root'));
-</code>
+{% endhighlight %}
 페이지에 렌더링을 통해 App 컴포넌트와 Codelab 컴포넌트가 생성된 것을 확인할 수 있었다.
 
 ### JSX 유의사항
-<code>
+{% highlight sh %}
 render() {
   return (
       <div>
@@ -133,21 +131,21 @@ render() {
       </div>
     );
 }
-</code>
+{% endhighlight %}
 컴포넌트에서 여러 element를 렌더링 할때, 하나의 container element가 이를 모두 포함하는 형태가 되어야 한다.
 
-<code>
+{% highlight sh %}
 render() {
   let text = "hello";
   return (
       <div>{text}</div>
     );
 }
-</code>
+{% endhighlight %}
 JSX안에서 JavaScript를 표현하는 방법은 {}로 wrapping을 하면 된다.
 이때 let이라는 키워드는 ES6의 새로운 문법이다. var과 비슷하게 변수를 선언하는데 사용하지만, scope가 함수단위인데 비해, let은 블록범위 내에서만 가능하게 하여 스코프문제를 해결해준다. 또 한번 선언이 되었으면 다시 선언될 수 없다. 리액트 js에서는 let을 사용하는 것이 관습이므로 이를 사용하도록 한다.
 
-<code>
+{% highlight sh %}
 class Codelab extends React.Component {
   render() {
     let text = "hi";
@@ -160,14 +158,14 @@ class Codelab extends React.Component {
       );
   }
 }
-</code>
+{% endhighlight %}
 JSX안에서 style을 설정할때는 string형식을 사용하지 않고 key가 CamelCase인 객체가 사용된다. (ex) background-Color X)
 
-<code>
+{% highlight sh %}
 <div>
 { /*it's comment*/ }
 </div>
-</code>
+{% endhighlight %}
 JSX에서 주석을 작성할 때는 { /*...*/ }과 같이 작성을 한다.
 
 ## 2-3편. props
@@ -176,8 +174,8 @@ props는 컴포넌트 내부의 Immutable Data를 의미한다.
 JSX 내부에 { this.props.propsName }으로 사용이 가능하다.
 컴포넌트를 사용할 때, <> 괄호 안에 propsName="value"
 this.props.children은 기본적으로 갖고있는 props로서,
-<code><Cpnt>여기에 있는 값이 들어간다.</Cpnt></code>
-<code>
+{% highlight sh %}<Cpnt>여기에 있는 값이 들어간다.</Cpnt>{% endhighlight %}
+{% highlight sh %}
 class Codelab extends React.Component {
   render() {
     return (
@@ -185,60 +183,60 @@ class Codelab extends React.Component {
           <h1>Hello {this.props.name}</h1>
           <div>{this.props.children}</div>
         </div>
-        </code>
+        {% endhighlight %}
       );
   }
 }
 class App extends React.Component {
   render() {
     return (
-      <code>
+      {% highlight sh %}
         <Codelab name="velo">여기에 있는 값이 들어간다.</Codelab>
-        </code>
+        {% endhighlight %}
       );
   }
 }
 ReactDOM.render(<App/>, document.getElementById('root'));
-</code>
+{% endhighlight %}
 이렇게 하면 h1과 div에 "velo", "여기에 있는.."이 들어간다.
 
-<code>
+{% highlight sh %}
 class App extends React.Component {
   render() {
     return (
-      <code>
+      {% highlight sh %}
         <Codelab name={this.props.name}>{this.props.children}</Codelab>
-        </code>
+        {% endhighlight %}
       );
   }
 }
 ReactDOM.render(<App = name="velo">여기에 있는 값이 들어간다.</App>, document.getElementById('root'));
-</code>
+{% endhighlight %}
 또 이전 것의 연속에서 App과 ReactDom.render부분을 이렇게 바꾸면, 똑같이 동작한다.
 
-<code>
+{% highlight sh %}
 class App extends React.Component {
   render() {
     return (
-      <code>
+      {% highlight sh %}
         <div>{this.props.value}</div>
-        </code>
+        {% endhighlight %}
       );
   }
 }
 App.defaultProps = {
   value: 0
 };
-</code>
+{% endhighlight %}
 props의 기본값설정은 클래스 정의 직후에 위와같이 설정하면 된다.
 
-<code>
+{% highlight sh %}
 App.propTypes = {
   value: React.PropTypes.string,
   secondValue: React.PropTypes.number,
   thirdValue: React.PropTypes.any.isRequired
 };
-</code>
+{% endhighlight %}
 위와같이 Type에 대한 검증도 가능하다.
 
 ## 2-4편. state
