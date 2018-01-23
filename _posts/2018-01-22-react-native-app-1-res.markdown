@@ -203,9 +203,7 @@ ReactDOM.render(<App/>, document.getElementById('root'));
 class App extends React.Component {
   render() {
     return (
-      {% highlight javascript %}
         <Codelab name={this.props.name}>{this.props.children}</Codelab>
-        {% endhighlight %}
       );
   }
 }
