@@ -35,7 +35,7 @@ categories: 로컬(모각코)
 
 ## 2-1편. Codepen 설정, ES6 클래스
 
-{% highlight sh %}
+{% highlight javascript %}
 class Polygon {
   constructor(hegiht, width) {
     this.height = height;
@@ -45,13 +45,13 @@ class Polygon {
 {% endhighlight %}
 <pre>자바스크립트 클래스안에서는 메소드만 정의가능하고, 변수를 사용하고 싶다면 위처럼 생성자를 통해 initialize를 해야한다.</pre>
 
-{% highlight sh %}
+{% highlight javascript %}
 var p = new Polygon();
 class Polygon {}
 {% endhighlight %}
 <pre>위와 같이 클래스 선언하기도 전에 클래스를 사용하면 레퍼런스 에러가 발생한다.</pre>
 
-{% highlight sh %}
+{% highlight javascript %}
 class Polygon {
   constructor(hegiht, width) {
     this.height = height;
@@ -68,7 +68,7 @@ class Polygon {
 {% endhighlight %}
 <pre>위와 같이 메소드를 정적으로 선언할 수 있다. 이렇게 하면 클래스를 생성하지 않고도 메소드를 사용할 수 있다는 차이점이 있다.</pre>
 
-{% highlight sh %}
+{% highlight javascript %}
 class Codelab extends React.Component {
 
 }
@@ -78,7 +78,7 @@ class Codelab extends React.Component {
 ## 2-2편. JSX의 특징
 
 ### 컴포넌트 생성하고 렌더링해보기
-{% highlight sh %}
+{% highlight javascript %}
 class Codelab extends React.Component {
   render() {
 
@@ -87,7 +87,7 @@ class Codelab extends React.Component {
 {% endhighlight %}
 <pre>모든 리액트 컴포넌트는 렌더 메소드를 가지는데, render 메소드는 컴포넌트가 어떻게 생길지 정의를 해준다.</pre>
 
-{% highlight sh %}
+{% highlight javascript %}
 var a = (
     <div>
       Welcome to <b>React</b>
@@ -97,12 +97,12 @@ var a = (
 <pre>JSX에서는 위와같이 xml과 비슷하게 html코드를 작성할 수 있다.</pre>
 
 html코드
-{% highlight sh %}
+{% highlight javascript %}
 <div id="root"></div>
 {% endhighlight %}
 
 JS코드
-{% highlight sh %}
+{% highlight javascript %}
 class Codelab extends React.Component {
   render() {
     return (
@@ -122,7 +122,7 @@ ReactDOM.render(<App/>, document.getElementById('root'));
 <pre>페이지에 렌더링을 통해 App 컴포넌트와 Codelab 컴포넌트가 생성된 것을 확인할 수 있었다.</pre>
 
 ### JSX 유의사항
-{% highlight sh %}
+{% highlight javascript %}
 render() {
   return (
       <div>
@@ -134,7 +134,7 @@ render() {
 {% endhighlight %}
 <pre>컴포넌트에서 여러 element를 렌더링 할때, 하나의 container element가 이를 모두 포함하는 형태가 되어야 한다.</pre>
 
-{% highlight sh %}
+{% highlight javascript %}
 render() {
   let text = "hello";
   return (
@@ -147,7 +147,7 @@ render() {
   let은 블록범위 내에서만 가능하게 하여 스코프문제를 해결해준다. 또 한번 선언이 되었으면 다시 선언될
   수 없다. 리액트 js에서는 let을 사용하는 것이 관습이므로 이를 사용하도록 한다.</pre>
 
-{% highlight sh %}
+{% highlight javascript %}
 class Codelab extends React.Component {
   render() {
     let text = "hi";
@@ -163,7 +163,7 @@ class Codelab extends React.Component {
 {% endhighlight %}
 <pre>JSX안에서 style을 설정할때는 string형식을 사용하지 않고 key가 CamelCase인 객체가 사용된다. (ex) background-Color X)</pre>
 
-{% highlight sh %}
+{% highlight javascript %}
 <div>
 { /*it's comment*/ }
 </div>
@@ -176,8 +176,8 @@ class Codelab extends React.Component {
 JSX 내부에 { this.props.propsName }으로 사용이 가능하다.
 컴포넌트를 사용할 때, <> 괄호 안에 propsName="value"
 this.props.children은 기본적으로 갖고있는 props로서,</pre>
-{% highlight sh %}<Cpnt>여기에 있는 값이 들어간다.</Cpnt>{% endhighlight %}
-{% highlight sh %}
+{% highlight javascript %}<Cpnt>여기에 있는 값이 들어간다.</Cpnt>{% endhighlight %}
+{% highlight javascript %}
 class Codelab extends React.Component {
   render() {
     return (
@@ -192,7 +192,7 @@ class Codelab extends React.Component {
 class App extends React.Component {
   render() {
     return (
-      {% highlight sh %}
+      {% highlight javascript %}
         <Codelab name="velo">여기에 있는 값이 들어간다.</Codelab>
         {% endhighlight %}
       );
@@ -202,11 +202,11 @@ ReactDOM.render(<App/>, document.getElementById('root'));
 {% endhighlight %}
 <pre>이렇게 하면 h1과 div에 "velo", "여기에 있는.."이 들어간다.</pre>
 
-{% highlight sh %}
+{% highlight javascript %}
 class App extends React.Component {
   render() {
     return (
-      {% highlight sh %}
+      {% highlight javascript %}
         <Codelab name={this.props.name}>{this.props.children}</Codelab>
         {% endhighlight %}
       );
@@ -216,11 +216,11 @@ ReactDOM.render(<App = name="velo">여기에 있는 값이 들어간다.</App>, 
 {% endhighlight %}
 <pre>또 이전 것의 연속에서 App과 ReactDom.render부분을 이렇게 바꾸면, 똑같이 동작한다.</pre>
 
-{% highlight sh %}
+{% highlight javascript %}
 class App extends React.Component {
   render() {
     return (
-      {% highlight sh %}
+      {% highlight javascript %}
         <div>{this.props.value}</div>
         {% endhighlight %}
       );
@@ -232,7 +232,7 @@ App.defaultProps = {
 {% endhighlight %}
 <pre>props의 기본값설정은 클래스 정의 직후에 위와같이 설정하면 된다.</pre>
 
-{% highlight sh %}
+{% highlight javascript %}
 App.propTypes = {
   value: React.PropTypes.string,
   secondValue: React.PropTypes.number,
