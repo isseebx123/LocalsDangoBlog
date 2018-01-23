@@ -192,9 +192,7 @@ class Codelab extends React.Component {
 class App extends React.Component {
   render() {
     return (
-      {% highlight javascript %}
         <Codelab name="velo">여기에 있는 값이 들어간다.</Codelab>
-        {% endhighlight %}
       );
   }
 }
@@ -220,9 +218,7 @@ ReactDOM.render(<App = name="velo">여기에 있는 값이 들어간다.</App>, 
 class App extends React.Component {
   render() {
     return (
-      {% highlight javascript %}
         <div>{this.props.value}</div>
-        {% endhighlight %}
       );
   }
 }
