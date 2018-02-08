@@ -95,5 +95,12 @@ class App extends React.Component {
   };
 }
 {% endhighlight %}
-<pre>
-</pre>
+
+---
+
+## React Native로 To do앱 만들기
+
+본래 목적이었던 네이티브 공부를 위해 Todo 앱을 만드는 인프런 강의를 수강하기로 한다.
+
+### UI 제작
+<img src="{{ site.baseurl }}/assets/postImages/20180208/ui.jpg"> <br>
