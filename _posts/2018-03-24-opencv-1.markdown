@@ -1,0 +1,48 @@
+---
+layout: post
+title:  "1. opencv 인프런강의 수강"
+date:   2018-02-11 16:40:00
+author: 이상현
+categories: opencv
+---
+
+[인프런](https://www.inflearn.com/course-status-2/)
+# OpenCV 빌드하기 (OpenCV 3.2 + CUDA + TBB)
+1. 환경
+Ubuntu 16.04LTS(강의에서는 Window 7 이상) / 64bit / CLion(강의에서는 VS)
+current setting version
+-OpenCV 3.2
+-Cuda Toolkit 9.1
+-CMake ? (lastest)
+-TBB 2018
+
+2. 다운로드 및 설치
+[CMake](https://cmake.org/)
+[opencv](https://github.com/opencv/opencv)
+[opencv_contrib](https://github.com/opencv/opencv_contrib)
+[cuda](https://developer.nvidia.com/cuda-downloads)
+- [cuda설치 참고사이트](http://www.kwangsiklee.com/ko/2017/07/%EC%9A%B0%EB%B6%84%ED%88%AC-16-04%EC%97%90%EC%84%9C-cuda-%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/)
+- 우분투에 기본적으로 깔려있는 Nouveau 드라이버로 인해 cuda 설치 시 필요한 Nvidia 그래픽 드라이버 설치가 충돌이 발생함.
+- 기존 드라이버 제거 후, Ctrl + Alt + F1으로 텍스트터미널 진입
+- sudo service lightdm stop 으로 X server 종료 (Ctrl + Alt + F7로 확인)
+- nvidia 드라이버 및 cuda 설치
+- sudo service lightdm start 으로 gui 복귀
+[tbb](https://www.threadingbuildingblocks.org/)
+
+3. CMake 설정 (Compiler: UnixFiles / vc14대신 gcc4.7 / Configure / Generate)
+TBB Setting
+TBB_ENV_INCLUDE :
+/tbb2017_20170226oss_win/tbb2017_20170226oss/include/
+TBB_ENV_LIB :
+/tbb2017_20170226oss_win/tbb2017_20170226oss/lib/intel64/vc14/tbb.lib
+TBB_ENV_LIB_DEBUG :
+/tbb2017_20170226oss_win/tbb2017_20170226oss/lib/intel64/vc14/tbb_debug.lib
+TBB_VER_FILE :
+/tbb2017_20170226oss_win/tbb2017_20170226oss/include/tbb_stddef.h
+
+OpenCV Cotrib Setting
+OPENCV_EXTRA_MODUKES_PATH
+/opencv_contrib-master/opencv_contrib-master/modules
+
+4. cmake build폴더에서 make -j4
+[clion에서 opencv 빌드 참고 동영상](https://www.youtube.com/watch?v=i1K9rXiei9I)
