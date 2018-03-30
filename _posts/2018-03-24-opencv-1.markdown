@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "1. opencv 인프런강의 수강"
+title:  "1. OpenCV 인프런강의 수강"
 date:   2018-02-11 16:40:00
 author: 이상현
-categories: opencv
+categories: OpenCV(인프런)
 ---
 
 [인프런](https://www.inflearn.com/course-status-2/)
