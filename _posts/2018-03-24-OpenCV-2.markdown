@@ -1,0 +1,70 @@
+---
+layout: post
+title:  "2. OpenCV 윈도우즈로 빌드"
+date:   2018-03-24 00:00:00
+author: 이상현
+categories: OpenCV(인프런)
+---
+
+# OpenCV 빌드하기 (OpenCV 3.2 + CUDA + TBB)
+1. 환경
+Window 10 / 64bit / Visual Studio 2017
+current setting version
+-OpenCV 3.2
+-Cuda Toolkit 9.1
+-CMake ? (lastest)
+-TBB 2018
+
+2. 다운로드 및 설치
+[CMake](https://cmake.org/)
+[opencv](https://github.com/opencv/opencv)
+[opencv_contrib](https://github.com/opencv/opencv_contrib)
+[cuda](https://developer.nvidia.com/cuda-downloads)
+[cuda설치 참고사이트](http://www.kwangsiklee.com/ko/2017/07/%EC%9A%B0%EB%B6%84%ED%88%AC-16-04%EC%97%90%EC%84%9C-cuda-%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/)
+[tbb](https://www.threadingbuildingblocks.org/)
+
+3. CMake 설정 (Compiler: VC 2015 Win64 / Configure / Generate)
+
+TBB Setting
+TBB_ENV_INCLUDE :
+/TBB/include/
+TBB_ENV_LIB :
+/TBB/lib/intel64/vc14/tbb.lib
+TBB_ENV_LIB_DEBUG :
+/TBB/lib/intel64/vc14/tbb_debug.lib
+TBB_VER_FILE :
+/TBB/include/tbb_stddef.h
+
+OPENCV_EXTRA_MODUKES_PATH :
+/opencv_contrib-master/modules
+
+TEST 2개 체크해제(오류가 잘 발생하기 때문에)
+
+4. cmake build폴더의 프로젝트를 Visual Studio로 열어서 솔루션빌드
+
+5. 이후 Visual Studio에서 INSTALL만을 빌드. build폴더에 install폴더가 생김을 확인할 수 있음.
+
+# 빌드 이후 Visual Studio에서..
+1. 콘솔응용프로그램으로 프로젝트 생성 및 프로젝트 설정
+- 자동으로 생기는 stdafx.h로 인한 문제가 발생하므로 프로젝트속성-C/C++-미리 컴파일된 헤더에서 사용안함으로 설정
+<img src="{{ site.baseurl }}/assets/postImages/20180330/stdafx.jpg"> <br>
+- 프로젝트속성에 VC++ Directories-포함 디렉토리: /OpenCV_LIBS/build/install/include 포함
+- 프로젝트속성에 VC++ Directories-라이브러리 디렉토리: /OpenCV_LIBS/build/install/x64/vc15/lib 포함
+<img src="{{ site.baseurl }}/assets/postImages/20180330/include_lib.jpg"> <br>
+
+2. OpenCV 라이브러리 종속성 추가
+- OpenCV 3.2 에서는 따로따로 존재했음.
+<img src="{{ site.baseurl }}/assets/postImages/20180330/linker_debug.jpg"> <br>
+<img src="{{ site.baseurl }}/assets/postImages/20180330/linker_release.jpg"> <br>
+- OpenCV 3.4 에서는 debug용 d 파일이 없음. 그리고 320이 아닌 341. ex) opencv_core341
+
+3. dll파일을 프로젝트에 추가
+- 1) 사용되는 opencv, tbb의 dll파일을 프로젝트 폴더에 복붙.
+<img src="{{ site.baseurl }}/assets/postImages/20180330/dll.jpg"> <br>
+- 2) 또는 환경변수 PATH에 dll 폴더 경로를 추가.
+- 3) 또는 windows/SysWow64 폴더에 dll 파일을 복붙.
+
+# 결과
+- 디버그용 파일이 없어서그런지 디버그모드에서는 빌드오류발생.
+- 릴리지모드에서는 빌드는 되지만, 응용프로그램 실행시 에러 발생.
+<img src="{{ site.baseurl }}/assets/postImages/20180330/err.jpg"> <br>
