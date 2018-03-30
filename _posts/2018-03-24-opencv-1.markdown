@@ -21,7 +21,7 @@ current setting version
 [opencv](https://github.com/opencv/opencv)
 [opencv_contrib](https://github.com/opencv/opencv_contrib)
 [cuda](https://developer.nvidia.com/cuda-downloads)
-- [cuda설치 참고사이트](http://www.kwangsiklee.com/ko/2017/07/%EC%9A%B0%EB%B6%84%ED%88%AC-16-04%EC%97%90%EC%84%9C-cuda-%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/)
+[cuda설치 참고사이트](http://www.kwangsiklee.com/ko/2017/07/%EC%9A%B0%EB%B6%84%ED%88%AC-16-04%EC%97%90%EC%84%9C-cuda-%EC%84%B1%EA%B3%B5%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/)
 - 우분투에 기본적으로 깔려있는 Nouveau 드라이버로 인해 cuda 설치 시 필요한 Nvidia 그래픽 드라이버 설치가 충돌이 발생함.
 - 기존 드라이버 제거 후, Ctrl + Alt + F1으로 텍스트터미널 진입
 - sudo service lightdm stop 으로 X server 종료 (Ctrl + Alt + F7로 확인)
@@ -30,6 +30,8 @@ current setting version
 [tbb](https://www.threadingbuildingblocks.org/)
 
 3. CMake 설정 (Compiler: UnixFiles / vc14대신 gcc4.7 / Configure / Generate)
+WITH에서 GTK2.0(안할 시 우분투에서 오류발생), CUDA, TBB 체크
+
 TBB Setting
 TBB_ENV_INCLUDE :
 /tbb2017_20170226oss_win/tbb2017_20170226oss/include/
@@ -40,9 +42,19 @@ TBB_ENV_LIB_DEBUG :
 TBB_VER_FILE :
 /tbb2017_20170226oss_win/tbb2017_20170226oss/include/tbb_stddef.h
 
-OpenCV Cotrib Setting
-OPENCV_EXTRA_MODUKES_PATH
+OPENCV_EXTRA_MODUKES_PATH :
 /opencv_contrib-master/opencv_contrib-master/modules
 
-4. cmake build폴더에서 make -j4
+TEST 2개 체크해제(오류가 잘 발생하기 때문에)
+
+4. cmake build폴더에서 make -j4로 프로젝트 빌드
 [clion에서 opencv 빌드 참고 동영상](https://www.youtube.com/watch?v=i1K9rXiei9I)
+
+5. sudo make install을 통해 빌드된 OpenCV를 설치
+
+# 결과
+1. 설치 이후 CLION을 통해 테스트 솔루션 빌드 성공 이후 오류가 발생하지만 이미지 창이 잠깐 띄워졌다가 사라지는 현상을 볼 수 있었음.
+
+2. 오류발생 확인을 추후에 하기위해 우분투를 종료하고 나중에 다시 부팅을 시도했지만, 부팅이 멈추면서 로그인창이 띄워지지 않음. 아마 그래픽(그래픽카드)와 관련된 문제라고 생각됨. => 쿠다
+
+3. 우분투 recovery mode, iso usb fsck 복구시도 했지만 부팅아직 안됨. 일단은 윈도우즈로 진행.
