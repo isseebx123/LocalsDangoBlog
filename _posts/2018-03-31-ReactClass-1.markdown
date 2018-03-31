@@ -6,8 +6,8 @@ author: 이상현
 categories: React
 ---
 
-# ES5 => ES6
-ES5
+# ES5 => ES6로 사용하기
+## ES5
 {% highlight javascript %}
 function test(a){
 	return function (b) {
@@ -16,7 +16,7 @@ function test(a){
 }
 {% endhighlight %}
 
-ES6
+## [ES6](http://babeljs.io/repl/#?babili=false&browsers=&build=&builtIns=false&code_lz=NoRgNATGDMC6B0BbAhgBwBQDsAEBeAfNjgNTYgCUA3AFDUDGA9pgM4Au2rApm3kcopzyEA3tQCQAJ06sArhJwADABKcANqoZhs2ACTDM_TgF8FNI0A&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=true&fileSize=false&lineWrap=false&presets=latest%2Creact%2Cstage-2&prettier=false&targets=&version=6.26.0&envVersion=)
 {% highlight javascript %}
 const test = a => b => {
 	return a + b;
@@ -76,7 +76,7 @@ function formatName(user) {
 ReactDOM.render(element, document.getElementById('root'));
 {% endhighlight %}
 
-# 컴포넌트 사용
+# funtional component (props를 사용하여 인자를 받을 수 있다.)
 {% highlight javascript %}
 function Test2(props){
   return <h1>Welcome to {props.country}</h1>
@@ -98,6 +98,14 @@ const element = (
 function WelcomeFunc(props){
   return <h1>Welcome to {props.country}</h1>
 }
+const element = (
+  <div>
+    <h1>
+      Hello, {formatName(user)}!, {test()}
+    </h1>
+    <h2>cc</h2>
+  </div>  
+);
 ReactDOM.render(
   <div>
     <WelcomeFunc country="Korea"/>
@@ -117,7 +125,47 @@ const Abc = () => {
 const Bbc = () => {
   return <h1>qwe</h1>;
 }
+function Ccc() {
+  return <h2>qq</h2>;
+}
+function Cdc() {
+  return 'qq';
+}
 
-<Abc/> <Bbc/>가능
+//가능
+<Abc/>
+<Bbc/>
+<Ccc/>
+</Cdc>
 {% endhighlight %}
 <b>첫문자가 대문자이고 리턴문이 있으면 가능하다.</b>
+
+# Class component (상태 state를 가질 수 있다.)
+{% highlight javascript %}
+class WelcomeClass extends React.Component {
+  constructor(prop){
+    super(prop); // welcome클래스가 실행되면서 전달받은 prop을 상위에도 올림
+    this.myName = 'fdsa';
+    this.propName = prop.name;
+  }
+
+  render(){
+    return <h1>
+      Hello, My name is {this.myName}. <br/>
+      My country is {this.props.country}. <br/>
+      Prop name is {this.propName}.
+    </h1>
+  }
+}
+
+ReactDOM.render(
+  <div>
+    <WelcomeClass country="Korea" name="kkk"/>
+  </div>,
+  document.getElementById('root')
+);
+{% endhighlight %}
+
+
+{% highlight javascript %}
+{% endhighlight %}
