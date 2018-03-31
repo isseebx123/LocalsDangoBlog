@@ -353,7 +353,3 @@ ReactDOM.render(
  	document.getElementById('root')
 );
 {% endhighlight %}
-
-{% highlight javascript %}
-
-{% endhighlight %}
