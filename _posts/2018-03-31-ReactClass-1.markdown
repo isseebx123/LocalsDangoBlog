@@ -136,7 +136,7 @@ function Cdc() {
 <Abc/>
 <Bbc/>
 <Ccc/>
-</Cdc>
+<Cdc/>
 {% endhighlight %}
 <b>첫문자가 대문자이고 리턴문이 있으면 가능하다.</b>
 
