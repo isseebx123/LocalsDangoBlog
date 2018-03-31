@@ -135,3 +135,186 @@ class Clock extends React.Component {
   );
 	{% endhighlight %}
 리액트에서 주로 사용하는 방법으로 이렇게 하지않고 위로갔다 아래로 갔다가 하면 복잡해진다.
+
+{% highlight javascript %}
+function App(){
+  return (
+    <div>
+        <Clock />
+        <Clock />
+        <Clock />
+    </div>
+  );
+}
+
+  ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+  );
+{% endhighlight %}
+이 처럼하면 어느정도까지 프로젝트를 진행할 수 있다.
+
+# Event
+{% highlight javascript %}
+class Toggle extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {isToggleOn: true};
+  }
+
+  handleClick(){
+		// console.log("handle clicked"); // 여기에 둘 경우 출력이 됨. 현재 setState가 제대로 동작하지 않기때문에.
+    this.setState(prevState => ({
+      isToggleOn: !prevState.isToggleOn
+    }));
+    console.log("handle clicked"); // 여기에 둘 경우 출력이 안됨
+  }
+
+  render(){
+    return (
+      <button onClick={this.handleClick}> // 제대로 동작하지 않음.
+        {this.state.isToggleOn ? 'ON' : "OFF"}
+      </button>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Toggle />,
+  document.getElementById('root')
+);
+{% endhighlight %}
+정상적으로 동작하지 않음.
+function도 this를 가지는데, 위처럼 되있는 경우 onClick이 불리면 this.handleClick에 할당되는
+this는 button의 this가 된다.
+하지만 우리가 원하는 것은 Toggle의 this이기 때문에 bind를 해주어야 한다.
+
+{% highlight javascript %}
+class Toggle extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {isToggleOn: true};
+  }
+
+  handleClick(){
+    console.log(this);
+    this.setState(prevState => ({
+      isToggleOn: !prevState.isToggleOn
+    }));
+  }
+
+  render(){
+    return (
+      <button onClick={this.handleClick.bind(this)}>
+        {this.state.isToggleOn ? 'ON' : "OFF"}
+      </button>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Toggle />,
+  document.getElementById('root')
+);
+{% endhighlight %}
+bind(this)를 해주어야 handleClick의 this가 Toggle이 될 수 있음.
+
+{% highlight javascript %}
+class Toggle extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {isToggleOn: true};
+
+		this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(){
+    console.log(this);
+    this.setState(prevState => ({
+      isToggleOn: !prevState.isToggleOn
+    }));
+  }
+
+  render(){
+    return (
+      <button onClick={this.handleClick}>
+        {this.state.isToggleOn ? 'ON' : "OFF"}
+      </button>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Toggle />,
+  document.getElementById('root')
+);
+{% endhighlight %}
+생성자에서 bind를 해주면 onClick에서 bind를 해주지 않고 그냥 써줄 수 있다.
+
+{% highlight javascript %}
+handleClick = () => {
+	console.log(this);
+	this.setState(prevState => ({
+		isToggleOn: !prevState.isToggleOn
+	}));
+}
+{% endhighlight %}
+또는 arrow를 통해 메소드를 정의하면 자동으로 bind가 된다
+
+{% highlight javascript %}
+<button onClick={() => this.handleClick()}>
+  {this.state.isToggleOn ? 'ON' : "OFF"}
+</button>
+{% endhighlight %}
+또는 arrow를 통해 메소드를 onclick을 정의하면 자동으로 bind가 된다
+
+# Conditional Rendering Example
+{% highlight javascript %}
+function UserGreeting(props){
+  return <h1>Welcome back!</h1>;
+}
+function GuestGreeting(props){
+  return <h1>Please sign up.</h1>;
+}
+function Greeting(props){
+  const isLoggedIn = props.isLoggedIn;
+  return isLoggedIn ? <UserGreeting /> : <GuestGreeting />;
+}
+
+ReactDOM.render(
+  <Greeting isLoggedIn={false} />,
+  document.getElementById('root')
+);
+{% endhighlight %}
+
+
+{% highlight javascript %}
+function Mailbox(props){
+	const unreadMessages = props.unreadMessages;
+	return (
+			<div>
+				<h1>Hello!</h1>
+				{unreadMessages.length > 0 &&
+					<h2>
+						You have {unreadMessages.length} unread messages.
+					</h2>
+				}
+			</div>
+	);
+}
+
+const messages = ['리액트', '여긴어디', '나는누구'];
+ReactDOM.render(
+		<Mailbox unreadMessages={messages} />,
+		document.getElementById('root')
+);
+{% endhighlight %}
+&&하면.. 앞에있는 것을 만족하면 뒤에있는 것을 실행함.
+
+{% highlight javascript %}
+
+{% endhighlight %}
+
+{% highlight javascript %}
+
+{% endhighlight %}
