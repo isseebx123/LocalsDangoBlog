@@ -7,7 +7,8 @@ categories: React
 ---
 
 # State
-{% highlight %}
+
+{% highlight javascript %}
 function tick() {
 	const element = (
 			<div>
