@@ -1,0 +1,71 @@
+---
+layout: post
+title:  "3회차. OpenCV 윈도우즈로 빌드 2/2"
+date:   2018-04-03 00:00:00
+author: 이상현
+categories: OpenCV(인프런)
+---
+
+# OpenCV 빌드하기 (OpenCV 3.2 + CUDA + TBB)
+1. 오류 원인 해결
+- 응용프로그램 0xc000a200오류 => tbb의 dll파일 중 부족한 것이 있어서 몽땅 복붙해서 넣었음.
+- 예제코드의 AVI 동영상이 열리지 않는 문제 => OpenCV의 dll파일 중 부족한 것이 있어서 몽땅 복붙해서 넣었음.
+<img src="{{ site.baseurl }}/assets/postImages/20180403/avi.jpg"> <br>
+- 배경색이 검기는 하지만 동영상이 출력되는 것을 확인해볼 수 있었음.
+- 다음은 예제코드
+{% highlight c %}
+#include <stdio.h>
+#include <opencv2\opencv.hpp>
+
+using namespace std;
+using namespace cv;
+
+#ifdef _DEBUG
+#pragma comment(lib, "opencv_core341.lib")
+#pragma comment(lib, "opencv_imgproc341.lib")
+#pragma comment(lib, "opencv_highgui341.lib")
+#pragma comment(lib, "opencv_imgcodecs341.lib")
+#pragma comment(lib, "opencv_videoio341.lib")
+#else
+#pragma comment(lib, "opencv_core341.lib")
+#pragma comment(lib, "opencv_imgproc341.lib")
+#pragma comment(lib, "opencv_highgui341.lib")
+#pragma comment(lib, "opencv_imgcodecs341.lib")
+#pragma comment(lib, "opencv_videoio341.lib")
+#endif
+
+void main()
+{
+	//file load
+	VideoCapture capture("test.avi"); // 숫자 0, 1 등을 넣으면 카메라화면을 받아옴.
+	Mat frame;
+
+	//check
+	if (!capture.isOpened())
+	{
+		printf("AVI file can not open.\n");
+		return;
+	}
+
+	//create window
+	namedWindow("w");
+
+	while (1) {
+		//grab frame from file & throw to Mat
+		capture >> frame;
+		if (frame.empty()) //Is video end?
+			break;
+
+		//processing example
+		Sobel(frame, frame, frame.depth(), 1, 0);
+		///////////////////
+
+		//display and delay
+		imshow("w", frame);
+		if (waitKey(10) > 0)
+			break;
+	}
+}
+{% endhighlight %}
+
+2. 
