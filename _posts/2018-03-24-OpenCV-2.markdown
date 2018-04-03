@@ -62,7 +62,7 @@ TEST 2개 체크해제(오류가 잘 발생하기 때문에)
 - 1) 사용되는 opencv, tbb의 dll파일을 프로젝트 폴더에 복붙.
 <img src="{{ site.baseurl }}/assets/postImages/20180330/dll.jpg"> <br>
 - 2) 또는 환경변수 PATH에 dll 폴더 경로를 추가.
-- 3) 또는 windows/SysWow64 폴더에 dll 파일을 복붙.
+- 3) 또는 windows/System 폴더에 dll 파일을 복붙.
 
 # 결과
 - 디버그용 파일이 없어서그런지 디버그모드에서는 빌드오류발생.
