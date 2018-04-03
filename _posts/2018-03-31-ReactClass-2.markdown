@@ -8,6 +8,21 @@ categories: React
 
 # State
 {% highlight javascript %}
+function tick() {
+	const element = (
+			<div>
+				<h1>Hello, world!</h1>
+				<h2>It is {new Date().toLocaleTimeString()}.</h2>
+			</div>
+	);
+	ReactDOM.render(element, document.getElementById('root'));
+}
+
+setInterval(tick, 1000);
+{% endhighlight %}
+하지만 위는 리액트를 잘못 사용한 예제임
+
+{% highlight javascript %}
 function Clock(props){
   return (
     <div>
@@ -62,7 +77,7 @@ class Clock extends React.Component {
     <Clock />,
     document.getElementById('root')
   );
-	{% endhighlight %}
+{% endhighlight %}
 
 # 이전 State값을 이용하여 State값을 바꾸는 경우
 {% highlight javascript %}
@@ -118,7 +133,7 @@ class Clock extends React.Component {
     <Clock />,
     document.getElementById('root')
   );
-	{% endhighlight %}
+{% endhighlight %}
 리액트에서 주로 사용하는 방법으로 이렇게 하지않고 위로갔다 아래로 갔다가 하면 복잡해진다.
 
 {% highlight javascript %}
