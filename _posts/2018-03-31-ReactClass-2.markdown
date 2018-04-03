@@ -8,21 +8,6 @@ categories: React
 
 # State
 {% highlight javascript %}
-function tick() {
-	const element = (
-			<div>
-				<h1>Hello, world!</h1>
-				<h2>It is {new Date().toLocaleTimeString()}.</h2>
-			</div>
-	);
-	ReactDOM.render(element, document.getElementById('root'));
-}
-
-setInterval(tick, 1000);
-{% endhighlight %}
-하지만 위는 리액트를 잘못 사용한 예제임
-
-{% highlight javascript %}
 function Clock(props){
   return (
     <div>
