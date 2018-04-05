@@ -1,0 +1,40 @@
+---
+layout: post
+title:  "4회차. 1. Introduce"
+date:   2018-04-04 00:00:00
+author: 이상현
+categories: OpenCV(인프런)
+---
+
+# How to build opencv, ceemple, webcam example
+1. ceemple은 VS13까지만 지원되고 VS15이후에는 지원이 되지 않음. 사용하려면 VS13에서 만든 ceemple프로젝트를 가져와서 사용하되 dll은 기존과 동일하게 다 추가를 시켜주어야 함.
+
+# About opencv Mat class
+```c
+int main(int ,char) {
+	// Declaration and at the same time created
+	Mat mtx(3, 3, CV_32F); // 3x3짜리 32비트인 float인 매트릭스를 생성
+	Mat cmtx(10, 1, CV_64FC2); // 10x1짜리 64비트인 float인 채널이 2개인 매트릭스를 생성
+	Mat img(Size(5, 3), CV_8UC3); // 여기서 5와 3은 width, height
+	// 행렬에서 row, col과 영상에서 width, height를 헷깔리지 않도록 주의!
+
+	// Create after the declaration
+	Mat mtx2;
+	mtx2 = Mat(3, 3, CV_32F);
+	Mat cmtx2;
+	cmtx2 = Mat(10, 1, CV_64FC1);
+
+	// Create a point
+	Mat* mtx3 = new Mat(3, 3, CV_32F);
+	delete mtx3;
+
+	// value set and printf
+	mtx.setTo(10);
+	cout << mtx << endl;
+
+	cmtx2.setTo(11);
+	cout << cmtx2 << endl;
+
+	return 0;
+}
+```
