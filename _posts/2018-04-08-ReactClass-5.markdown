@@ -60,4 +60,91 @@ categories: React
 # 프로젝트 진행
 1. 컴포넌트 구현
 - 관련 [깃허브](https://github.com/JeffGuKang/ReactNative-Tutorial)
-- 
+
+## CoinView.js
+```js
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native';
+
+class CoinView extends React.Component {
+    render(){
+        return (
+            <View style={styles.container}>
+                <Text>AAA</Text>
+                <Text>BBB</Text>
+                <Text>CCC</Text>
+            </View>
+        );
+    }
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: 'column',
+        backgroundColor: 'blue',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+    }
+});
+
+export default CoinView;
+```
+
+```js
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native';
+
+class CoinView extends React.Component {
+    render(){
+        return (
+            <View style={this.props.style}>
+                <Text>AAA</Text>
+                <Text>BBB</Text>
+                <Text>CCC</Text>
+            </View>
+        );
+    }
+}
+
+export default CoinView;
+```
+props(property)를 통해 style을 받을 수 있다.
+
+## App.js
+```js
+import React from 'react';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import TopBar from './components/TopBar';
+import CoinView from './components/CoinView';
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
+      <StatusBar hidden={true} barStyle="light-content" />
+      <TopBar title="im title"/>
+      <CoinView style={styles.coinView}></CoinView>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'yellow',
+    //backgroundColor: '#fff',
+    //alignItems: 'center',
+    //justifyContent: 'center',
+  },
+  coinView: {
+    width: '100%',
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: 'skyblue',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  }
+});
+```

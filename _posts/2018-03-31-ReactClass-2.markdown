@@ -79,7 +79,7 @@ class Clock extends React.Component {
     <Clock />,
     document.getElementById('root')
   );
-{% endhighlight %}
+```
 
 # 이전 State값을 이용하여 State값을 바꾸는 경우
 ```js
