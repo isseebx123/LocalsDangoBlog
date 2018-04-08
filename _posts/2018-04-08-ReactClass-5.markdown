@@ -13,19 +13,51 @@ categories: React
 		<td>React Native</td>
 	</tr>
 	<tr>
-		<td><code><div></code></td>
-		<td><code><View></code></td>
+		<td>div</td>
+		<td>View</td>
 	</tr>
 	<tr>
-		<td><code><span></code></td>
-		<td><code><Text></code></td>
+		<td>span</td>
+		<td>Text</td>
 	</tr>
 	<tr>
-		<td><code><li>,<ul></code></td>
-		<td><code><ListView></code></td>
+		<td>li,ul</td>
+		<td>ListView</td>
 	</tr>
 	<tr>
-		<td><code><img></code></td>
-		<td><code><image></code></td>
+		<td>img</td>
+		<td>image</td>
 	</tr>
 </table>
+
+# React Native
+## flex
+- flex:1, flex:1이면 화면을 세로로 50대 50으로 가진다.
+- flex:1, flex:2이면 화면을 세로로 33대 66으로 가진다.
+## flexDirection
+- flex direction의 default는 column이다.
+- flex direction가 row이면 가로 방향으로 생긴다.
+- ex) flexDirection: 'row'.. 'column'
+## justifyContent
+- ex) justifyContent: 'space-around'
+## alignItems
+- ex) alignItems: 'centers'
+## alignSelf
+- 부모가 정해준 것을 하지않음.
+- ex) alignSelf: 'flex-end'.. 'flex-start', 'auto', 'center'
+
+# Expo XDE
+1. 프로젝트와 연동
+- USB로 하는 경우 Host-Local으로 설정
+- Expo에서 제공해주는 서버로 하는 경우 Host-Tunnel으로 설정
+- Wifi로 하는 경우 Host-LAN으로 설정
+- 만약 XDE가 잘안된다면 [스낵](https://snack.expo.io/@isseebx/mypj)을 이용
+
+2. 컴포넌트란
+- 독립전인 단위 모듈
+- React.js에서 상속
+
+# 프로젝트 진행
+1. 컴포넌트 구현
+- 관련 [깃허브](https://github.com/JeffGuKang/ReactNative-Tutorial)
+- 
