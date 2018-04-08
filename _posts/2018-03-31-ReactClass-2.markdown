@@ -1,13 +1,14 @@
 ---
 layout: post
-title:  "1. 리액트 특강 1일차(15:00 ~ 18:00)"
+title:  "1일차. 리액트 특강 1일차(15:00 ~ 18:00)"
 date:   2018-03-31 00:00:00
 author: 이상현
 categories: React
 ---
 
 # State
-{% highlight javascript %}
+
+```js
 function tick() {
 	const element = (
 			<div>
@@ -19,10 +20,11 @@ function tick() {
 }
 
 setInterval(tick, 1000);
-{% endhighlight %}
+```
+
 하지만 위는 리액트를 잘못 사용한 예제임
 
-{% highlight javascript %}
+```js
 function Clock(props){
   return (
     <div>
@@ -40,10 +42,10 @@ function tick() {
 };
 
 setInterval(tick, 1000);
-{% endhighlight %}
+```
 이것도 리액트를 잘못 사용하는 예제임.
 
-{% highlight javascript %}
+```js
 class Clock extends React.Component {
   constructor(props){
     super(props);
@@ -80,22 +82,27 @@ class Clock extends React.Component {
 {% endhighlight %}
 
 # 이전 State값을 이용하여 State값을 바꾸는 경우
-{% highlight javascript %}
+```js
 this.setState({
 	counter: this.state.counter + this.props.increment
 	});
-{% endhighlight %}
+```
 는 틀린예제임.
 
-{% highlight javascript %}
+```js
 this.setState((prevState, props) => ({
 	counter: prevState.counter + props.increment
 	}));
+<<<<<<< HEAD
 {% endhighlight %}
 setState는 비동기적으로 동작하므로 위 처럼 사용해야 함.
+=======
+```
+이 처럼 사용해야 함.
+>>>>>>> 83d97a749d13a86bdb7a9bc4f0a3b842a36ac99a
 
 # Top-down data flow (위에서 아래로 데이터전송)
-{% highlight javascript %}
+```js
 function FormattedDate(props){
   return <h2>It is {props.date.toLocaleTimeString()}.</h2>;
 }
@@ -133,10 +140,10 @@ class Clock extends React.Component {
     <Clock />,
     document.getElementById('root')
   );
-	{% endhighlight %}
+```
 리액트에서 주로 사용하는 방법으로 이렇게 하지않고 위로갔다 아래로 갔다가 하면 복잡해진다.
 
-{% highlight javascript %}
+```js
 function App(){
   return (
     <div>
@@ -151,11 +158,11 @@ function App(){
     <App />,
     document.getElementById('root')
   );
-{% endhighlight %}
+```
 이 처럼하면 어느정도까지 프로젝트를 진행할 수 있다.
 
 # Event
-{% highlight javascript %}
+```js
 class Toggle extends React.Component {
   constructor(props){
     super(props);
@@ -183,13 +190,13 @@ ReactDOM.render(
   <Toggle />,
   document.getElementById('root')
 );
-{% endhighlight %}
+```
 정상적으로 동작하지 않음.
 function도 this를 가지는데, 위처럼 되있는 경우 onClick이 불리면 this.handleClick에 할당되는
 this는 button의 this가 된다.
 하지만 우리가 원하는 것은 Toggle의 this이기 때문에 bind를 해주어야 한다.
 
-{% highlight javascript %}
+```js
 class Toggle extends React.Component {
   constructor(props){
     super(props);
@@ -216,10 +223,10 @@ ReactDOM.render(
   <Toggle />,
   document.getElementById('root')
 );
-{% endhighlight %}
+```
 bind(this)를 해주어야 handleClick의 this가 Toggle이 될 수 있음.
 
-{% highlight javascript %}
+```js
 class Toggle extends React.Component {
   constructor(props){
     super(props);
@@ -248,28 +255,28 @@ ReactDOM.render(
   <Toggle />,
   document.getElementById('root')
 );
-{% endhighlight %}
+```
 생성자에서 bind를 해주면 onClick에서 bind를 해주지 않고 그냥 써줄 수 있다.
 
-{% highlight javascript %}
+```js
 handleClick = () => {
 	console.log(this);
 	this.setState(prevState => ({
 		isToggleOn: !prevState.isToggleOn
 	}));
 }
-{% endhighlight %}
+```
 또는 arrow를 통해 메소드를 정의하면 자동으로 bind가 된다
 
-{% highlight javascript %}
+```js
 <button onClick={() => this.handleClick()}>
   {this.state.isToggleOn ? 'ON' : "OFF"}
 </button>
-{% endhighlight %}
+```
 또는 arrow를 통해 메소드를 onclick을 정의하면 자동으로 bind가 된다
 
 # Conditional Rendering Example
-{% highlight javascript %}
+```js
 function UserGreeting(props){
   return <h1>Welcome back!</h1>;
 }
@@ -285,10 +292,10 @@ ReactDOM.render(
   <Greeting isLoggedIn={false} />,
   document.getElementById('root')
 );
-{% endhighlight %}
+```
 
 
-{% highlight javascript %}
+```js
 function Mailbox(props){
 	const unreadMessages = props.unreadMessages;
 	return (
@@ -308,10 +315,10 @@ ReactDOM.render(
 		<Mailbox unreadMessages={messages} />,
 		document.getElementById('root')
 );
-{% endhighlight %}
+```
 &&하면.. 앞에있는 것을 만족하면 뒤에있는 것을 실행함.
 
-{% highlight javascript %}
+```js
 function WarningBanner(props){
   if(!props.warn){
     return null;
@@ -352,4 +359,4 @@ ReactDOM.render(
  	<Page />,
  	document.getElementById('root')
 );
-{% endhighlight %}
+```
