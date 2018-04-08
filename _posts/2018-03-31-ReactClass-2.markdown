@@ -79,7 +79,7 @@ class Clock extends React.Component {
     <Clock />,
     document.getElementById('root')
   );
-```
+{% endhighlight %}
 
 # 이전 State값을 이용하여 State값을 바꾸는 경우
 ```js
@@ -93,8 +93,13 @@ this.setState({
 this.setState((prevState, props) => ({
 	counter: prevState.counter + props.increment
 	}));
+<<<<<<< HEAD
+{% endhighlight %}
+setState는 비동기적으로 동작하므로 위 처럼 사용해야 함.
+=======
 ```
 이 처럼 사용해야 함.
+>>>>>>> 83d97a749d13a86bdb7a9bc4f0a3b842a36ac99a
 
 # Top-down data flow (위에서 아래로 데이터전송)
 ```js
