@@ -508,3 +508,18 @@ render(){
     }
 ```
 icon 사용
+
+# 이후
+1. app.json
+```js
+		"ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sanghyun.my-first-app"
+    },
+    "android": {
+      "package": "com.sanghyun.my-first-app"
+    }
+```
+2. exp detach
+- 완료되면 ios, android프로젝트 파일이 생성되므로
+- 이를 안드로이드 스튜디오에서 열면 가능하다!!
