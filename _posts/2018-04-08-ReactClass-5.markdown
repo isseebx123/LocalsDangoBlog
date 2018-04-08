@@ -422,3 +422,89 @@ const styles = StyleSheet.create({
 export default CoinView;
 ```
 api 데이터를 이용
+
+```js
+render(){
+		let detailCells = [];
+
+		this.state.coinDatas.map((data, index) => {
+				let coinDetail = (
+						<CoinDetail
+								key={index}
+								rank={data.rank}
+								name={data.name}
+								price={data.price_usd}
+								volumn={data.market_cap_usd}
+						/>
+				);
+
+				detailCells.push(coinDetail);
+		});
+
+		return (
+				<ScrollView style={this.props.style}>
+						{detailCells}
+				</ScrollView>
+		);
+}
+```
+scroll view를 사용
+
+## Constants
+```js
+/**
+  Icons from: https://github.com/cjdowner/cryptocurrency-icons/tree/master/32%402x/icon
+*/
+export function getCoinIconUri(coinName) {
+    switch (coinName) {
+      case 'Bitcoin':
+        return 'https://github.com/cjdowner/cryptocurrency-icons/blob/master/32@2x/icon/btc@2x.png?raw=true';
+
+      case 'Ethereum':
+        return 'https://github.com/cjdowner/cryptocurrency-icons/blob/master/32@2x/icon/eth@2x.png?raw=true';
+
+      case 'Ripple':
+        return 'https://github.com/cjdowner/cryptocurrency-icons/blob/master/32@2x/icon/xrp@2x.png?raw=true';
+
+      case 'Bitcoin Cash':
+        return 'https://github.com/cjdowner/cryptocurrency-icons/blob/master/32@2x/icon/bcc@2x.png?raw=true';
+
+      case 'Litecoin':
+        return 'https://github.com/cjdowner/cryptocurrency-icons/blob/master/32@2x/icon/ltc@2x.png?raw=true';
+
+      default:
+        return 'https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png';
+    }
+}
+```
+
+## CoinView
+```js
+import { getCoinIconUri } from '../libs/Constants';
+...
+render(){
+        let detailCells = [];
+
+        this.state.coinDatas.map((data, index) => {
+            let coinDetail = (
+                <CoinDetail
+                    iconUri={getCoinIconUri(data.name)}
+                    key={index}
+                    rank={data.rank}
+                    name={data.name}
+                    price={data.price_usd}
+                    volumn={data.market_cap_usd}
+                />
+            );
+
+            detailCells.push(coinDetail);
+        });
+
+        return (
+            <ScrollView style={this.props.style}>
+                {detailCells}
+            </ScrollView>
+        );
+    }
+```
+icon 사용
