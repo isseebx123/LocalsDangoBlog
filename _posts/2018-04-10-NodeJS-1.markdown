@@ -1,0 +1,147 @@
+---
+layout: post
+title:  "1회차. NodeJS"
+date:   2018-04-10 01:45:00
+author: 이상현
+categories: NodeJS
+---
+
+# 앞부분의 지엽적인 얘기는 제외
+1. AngularJS는 프론트엔드, NodeJS는 백엔드
+2. NodeJS는 이벤트 기반의 비동기 I/O 프레임워크
+<img src="{{ site.baseurl }}/assets/postImages/20180410/event.jpg"> <br>
+- Client가 NodeJS서버에 요청을 하면
+- 서버는 이벤트로 받아들이고 Event Loop에 쌓아둔다.
+- Event Loop에서 쓰레드가 하나씩 처리하는데, 오래걸리는 작업은 다른 쓰레드에 부여한다.
+- 오래걸리는 작업은 디스크에서 읽어야 하는 등이 있는데, 작업이 완료되면 Event Loop으로 결과를 반환한다.
+
+# 모듈시스템
+## index.js
+```js
+const http = require('http');
+http.createServer();
+```
+<pre>
+  http모듈을 가져와서 변수에 할당한다.
+  이후에는 모듈이 제공하는 메소드를 사용할 수 있음.
+</pre>
+
+## math.js
+```js
+function sum (a, b) {
+  return a + b;
+}
+module.exports = {
+  sum: sum
+};
+```
+<pre>
+  module.exports에서 객체 sum을 할당하여 함수를 넣어준다.
+</pre>
+
+## index.js
+```js
+const math = require('./math.js');
+const result = math.sum(1, 2);
+console.log(result);
+```
+<pre>
+	위와같이 모듈을 사용해볼 수 있다.
+  $node index.js를 하면 결과를 확인할 수 있다.
+</pre>
+
+# 비동기 세계- readFile(비동기)와 readFileSync(동기)
+## readFileSync
+```js
+const fs = require('fs');
+const data = fs.readFileSync('TestTxt.txt', 'utf8');
+console.log(data);
+```
+<pre>
+	file system이라는 모듈에서 readFileSync를 사용해본다.
+  'utf8'옵션을 주지않으면 버퍼값을 저장하여 출력함.
+  NodeJS 사이트의 Docs를 활용
+</pre>
+
+## readFileSync
+```js
+const fs = require('fs');
+const data = fs.readFile('TestTxt.txt', 'utf8', function(err, data) {
+    if (err) throw err;
+    console.log(data);
+})
+```
+<pre>
+	readFile은 비동기함수로 파일을 다읽기까지 기다리지않고 다음줄을 실행하며,
+  data를 받아오면 callback함수를 실행한다.
+  callback함수는 (err, data) => {} 형태로도 가능.
+</pre>
+
+# Hello World 서버
+[Hello World 서버 코드](https://nodejs.org/dist/latest-v6.x/docs/api/synopsis.html)
+```js
+const http = require('http');
+
+const hostname = '127.0.0.1';
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World\n');
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+```
+<pre>
+	node index.js를 통해 서버 시작.
+  제대로 확인해보려면 curl -X GET 'localhost:3000'를 이용한다.
+</pre>
+
+## curl 오류
+1. vscode내 powershell이 따로 다른 curl command를 가지는 듯함. 제대로 동작하지 않음.
+2. curl을 다운로드 받고 D:\curl\을 환경변수에 등록.
+3. 하지만 cmd에서도 제대로 동작하지 않음.
+4. curl.exe가 있는 곳에서 git-bash로 하면 작동함.
+
+# 라우팅 추가
+<pre>
+   curl -X GET 'localhost:3000/users/'처럼 다양한 url을 주더라도
+   현재는 항상 같은 응답(Hello World!)을 한다.
+   사용자가 응답을 요청하면 createServer가 호출되므로 이 부분을 수정한다.
+</pre>
+```js
+const http = require('http');
+
+const hostname = '127.0.0.1';
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+  if(req.url === '/') {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello World\n');
+  }
+  else if(req.url === 'users') {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Users\n');
+  }
+  else {
+    res.statusCode = 404;
+    res.end('Not Found!\n');
+  }
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+```
+<pre>
+	 curl -X GET 'localhost:3000/users/' -v 처럼 v옵션을 주면 statusCode도 확인가능하다.
+</pre>
+
+# ExpressJS (익스프레스 프레임워크)
+> 사용하는 이유? 페이지가 늘수록 위의 라우팅코드가 계속 늘어날 것이므로..
