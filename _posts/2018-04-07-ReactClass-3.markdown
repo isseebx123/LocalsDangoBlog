@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "2. 리액트 특강 2일차(10:00 ~ 12:00)"
+title:  "리액트 특강 2일차(10:00 ~ 12:00)"
 date:   2018-04-07 00:00:00
 author: 이상현
 categories: React
@@ -71,7 +71,7 @@ function Blog(props) {
       {props.posts.map((post) =>
         <li key = {post.id}>
         {post.title}
-        </li>  
+        </li>
       )}
     </ul>
   );

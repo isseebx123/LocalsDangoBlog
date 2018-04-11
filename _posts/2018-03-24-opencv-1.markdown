@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "1회차. OpenCV 인프런강의 수강"
+title:  "OpenCV 1회차 - OpenCV 인프런강의 수강"
 date:   2018-03-24 00:00:00
 author: 이상현
 categories: OpenCV(인프런)

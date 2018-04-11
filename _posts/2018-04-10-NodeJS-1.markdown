@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "1회차. NodeJS"
+title:  "NodeJS 1회차"
 date:   2018-04-10 01:45:00
 author: 이상현
 categories: NodeJS
@@ -101,7 +101,7 @@ server.listen(port, hostname, () => {
 </pre>
 
 ## curl 오류
-1. vscode내 powershell이 따로 다른 curl command를 가지는 듯함. 제대로 동작하지 않음.
+1. vscode내 powershell이 따로 다른 curl command를 가지는 듯함. 제대로 동작하지 않음. => curl localhost:3000처럼하면 동작
 2. curl을 다운로드 받고 D:\curl\을 환경변수에 등록.
 3. 하지만 cmd에서도 제대로 동작하지 않음.
 4. curl.exe가 있는 곳에서 git-bash로 하면 작동함.

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "1일차. 리액트 특강 1일차(10:00 ~ 15:00)"
+title:  "리액트 특강 1일차(10:00 ~ 15:00)"
 date:   2018-03-31 00:00:00
 author: 이상현
 categories: React
@@ -89,7 +89,7 @@ const element = (
     </h1>
     <h2>cc</h2>
     <Test2 country="test"/>
-  </div>  
+  </div>
 );
 {% endhighlight %}
 
@@ -104,7 +104,7 @@ const element = (
       Hello, {formatName(user)}!, {test()}
     </h1>
     <h2>cc</h2>
-  </div>  
+  </div>
 );
 ReactDOM.render(
   <div>

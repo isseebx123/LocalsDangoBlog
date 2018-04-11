@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "2회차. OpenCV 윈도우즈로 빌드 1/2"
+title:  "OpenCV 2회차 - OpenCV 윈도우즈로 빌드 1/2"
 date:   2018-03-24 00:00:00
 author: 이상현
 categories: OpenCV(인프런)

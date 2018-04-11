@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "2. 리액트 특강 2일차(13:10 ~ 18:00)"
+title:  "리액트 특강 2일차(13:10 ~ 18:00)"
 date:   2018-04-07 00:00:00
 author: 이상현
 categories: React
