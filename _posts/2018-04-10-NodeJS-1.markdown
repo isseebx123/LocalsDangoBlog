@@ -101,9 +101,9 @@ server.listen(port, hostname, () => {
 </pre>
 
 ## curl 오류
-1. vscode내 powershell이 따로 다른 curl command를 가지는 듯함. 제대로 동작하지 않음. => curl localhost:3000처럼하면 동작
+1. vscode내 powershell이 따로 다른 curl command를 가지는 듯함. 제대로 동작하지 않음.
 2. curl을 다운로드 받고 D:\curl\을 환경변수에 등록.
-3. 하지만 cmd에서도 제대로 동작하지 않음.
+3. 하지만 cmd에서도 제대로 동작하지 않음.  => curl localhost:3000처럼하면 동작
 4. curl.exe가 있는 곳에서 git-bash로 하면 작동함.
 
 # 라우팅 추가

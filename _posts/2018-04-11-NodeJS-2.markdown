@@ -1,0 +1,205 @@
+---
+layout: post
+title:  "NodeJS 2회차"
+date:   2018-04-11 13:11:00
+author: 이상현
+categories: NodeJS
+---
+
+# ExpressJS (익스프레스 프레임워크)
+> npm install express로 express를 설치해야함.
+## ExpressJS 구성
+- [ExpressJS](http://expressjs.com/ko/)는 NodeJS로 만들어진 웹프레임워크이다.
+1. 어플리케이션: ExpreesJS의 객체를 의미한다.
+- 서버에 필요한 기능인 미들웨어를 어플리케이션에 추가한다.
+- 라우팅 설정을 할 수 있다.
+- 서버를 요청 대기 상태로 만들 수 있다.
+```js
+const express = require('express');
+const app = express();
+
+app.listen(3000, function(){
+  console.log('Server is running');
+})
+```
+
+2. 미들웨어: 함수들의 연속
+> ExpressJS에 어떤 기능을 추가하고 싶을 때, 미들웨어에 추가함.
+```js
+const express = require('express');
+const app = express();
+
+function logger(req, res, next){
+  console.log('i am logger');
+  next();
+}
+
+app.use(logger);
+
+app.listen(3000, function(){
+  console.log('Server is running');
+})
+```
+<pre>
+  app.use()는 미들웨어를 추가하겠다는 것임
+  logger는 log를 찍는 함수인데, 미들웨어는 인터페이스(req, res, next)가 정해져있음.
+  또 미들웨어는 next()함수를 호출해서 다음 동작이 진행될 수 있도록 해야함.
+</pre>
+
+```sh
+$curl localhost:3000
+```
+<pre>
+  위와같이 curl을 날리면 node index.js했던 터미널에 log가 찍힌다.
+</pre>
+
+```js
+const express = require('express');
+const app = express();
+
+function logger(req, res, next){
+  console.log('i am logger');
+  next();
+}
+
+function logger2(req, res, next){
+  console.log('i am logger2');
+  next();
+}
+
+app.use(logger);
+app.use(logger2);
+
+app.listen(3000, function(){
+  console.log('Server is running');
+})
+```
+<pre>
+  실행순서는 logger가 호출되고, next가 호출되어 logger2가 호출된다.
+  만약 미들웨어 함수 logger에서 next를 호출하지 않으면,
+  logger2가 실행되지 않고, client에게 응답이 가지도 않는다. (원래 curl하면 html코드가 응답으로 갔었음)
+  그래서 next를 호출해주는 것이 중요하다!
+</pre>
+<img src="{{ site.baseurl }}/assets/postImages/20180411/success.jpg"> <br>
+<img src="{{ site.baseurl }}/assets/postImages/20180411/next.jpg"> <br>
+
+### 써드파티 미들웨어를 사용(다른사람이 만들어놓은 미들웨어)
+> [www.npmjs.com](www.npmjs.com)에서 express등의 모듈을 찾을 수 있음
+> 서버에 로그를 찍어주는 morgan모듈을 npm install morgan으로 설치.
+```js
+const express = require('express');
+const morgan = require('morgan');
+const app = express();
+
+function logger(req, res, next){
+  console.log('i am logger');
+  next();
+}
+
+function logger2(req, res, next){
+  console.log('i am logger2');
+  next();
+}
+
+app.use(logger);
+app.use(logger2);
+app.use(morgan('dev'));
+
+app.listen(3000, function(){
+  console.log('Server is running');
+})
+```
+<img src="{{ site.baseurl }}/assets/postImages/20180411/dev.jpg"> <br>
+<pre>
+  predefined된 format string ex) 'dev'를 사용하여 미들웨어를 실행한다.
+</pre>
+
+### 일반 미들웨어
+> 위에서 했던 req, res, next로 인자를 3개받는 미들웨어가 일반 미들웨어임.
+> 에러 미들웨어는 err까지 해서 인자를 4개 받음.
+```js
+const express = require('express');
+const morgan = require('morgan');
+const app = express();
+
+function commonmw(req, res, next){
+  console.log('i am commonmw');
+  next(new Error('error ouccered'));
+}
+
+function errormw(err, req, res, next){
+  console.log(err.message);
+  // 에러를 처리
+  next();
+}
+
+app.use(commonmw);
+app.use(errormw);
+app.use(morgan('dev'));
+
+app.listen(3000, function(){
+  console.log('Server is running');
+})
+```
+<img src="{{ site.baseurl }}/assets/postImages/20180411/err.jpg"> <br>
+
+3. 라우팅
+> 요청 url에 대해 적절한 핸들러 함수로 연결해 주는 기능을 라우팅이라고 부른다.
+- 어플리케이션의 get(), post() 메소드로 구현할 수 있다.
+- 라우팅을 위한 전용 Router 클래스를 사용할 수도 있다.
+```js
+const server = http.createServer((req, res) => {
+  if(req.url === '/') {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello World\n');
+  }
+  else if(req.url === '/users') {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Users\n');
+  }
+  else {
+    res.statusCode = 404;
+    res.end('Not Found!\n');
+  }
+});
+```
+<pre>
+  위는 http모듈만을 가지고 라우팅로직을 구현한 것이다.
+</pre>
+
+
+4. 요청객체 req
+> 클라이언트의 요청 정보를 담은 객체이다.
+> http 모듈의 request 객체를 래핑한 것이다.
+> req.params(), req.query(), req.body() 메소드를 주로 사용한다.
+
+5. 응답객체 res
+> 클라이언트 응답 정보를 담은 객체이다.
+> http 모듈의 response 객체를 래핑한 것이다.
+> res.send(), res.status(), res.json() 메소드를 주로 사용한다.
+
+### Hello Express
+> [http://expressjs.com/ko/starter/hello-world.html](http://expressjs.com/ko/starter/hello-world.html)
+```js
+var express = require('express');
+var app = express(); // express객체를 생성해서 어플리케이션 변수에 할당
+
+// 라우팅설정
+// get메소드에 루트 url로 들어왔을 때 어떤 콜백함수를 호출할지를 설정.
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+// 어플리케이션의 리슨함수를 통해 서버를 구동
+// 3000: 포트번호
+// function(): 리슨함수가 완료되었을 때 실행할 콜백함수
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!');
+});
+```
+<pre>
+	Hello world 예제이다.
+  res.send()는 client에게 문자열을 보내주는 기능임.
+</pre>
