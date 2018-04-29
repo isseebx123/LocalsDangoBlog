@@ -7,13 +7,11 @@ categories: Naver_Hackday_Ready
 ---
 
 # Spring Data JPA 입문 전 이론
-## ORM(Object Relational Mapping)란?
+## 1. ORM(Object Relational Mapping)란?
 > ORM은 ORM 프레임워크는 객체와 테이블을 매핑해서 패러다임의 불일치 문제를 개발자 대신 해결해 준다. 데이터베이스에 데이터를 저장할 때 INSERT/UPDATE SQL구문을 직접 작성하는 것이 아닌 자바 컬렉션에 저장하듯 프레임워크에 저장하면 된다. 그러면 ORM 프레임워크가 적절한 SQL을 생성해서 데이터베이스에 매핑된 객체를 저장해 준다.
 
-## JPA(Java Persistence API)란?
+## 2. JPA(Java Persistence API)란?
 > Java를 이용해서 데이터를 관리하는 기법을 하나의 스펙으로 정리한 표준이다. JPA는 Java진영 에서 사용하는 ORM 기술 표준 이다. 즉 자발 기반에서 구현할 수 있는 ORM 표준 기술로 위에서 애기했던 SQL 작성 없이 객체를 데이터베이스에 직접 저장 할 수 있게 도와주고, 객체와 관계형 데이터베이스의 패러다임 불일치 문제도 해결해 준다.
-
-## 위의 2개에 대한 [출처]("https://wiseyoun07.blog.me/221040082705")
 
 ## JPA 구조에 대한 설명
 1. 엔티티
@@ -25,7 +23,7 @@ categories: Naver_Hackday_Ready
 - 여러 엔티티 객체들을 관리하는 역할을 함
 - 자신이 관리해야할 엔티티 객체들을 '영속 컨텍스트(Persistence Context)'라는 곳에 넣어둠
 
-3. 영속 컨텍스트와 엔티티 객체 [출처]("http://heowc.tistory.com/55")
+3. 영속 컨텍스트와 엔티티 객체
 1) 비영속(new / transist)
  - 일반적인 인스턴스이라고 볼 수 있습니다. ( new Entity() )
 
@@ -44,7 +42,7 @@ categories: Naver_Hackday_Ready
  - Database Side에서 지워졌지만 영속성 컨텍스트에서는 존재하는 상태입니다.
 
 # Spring Data JPA
-## 위에서 했던 처리 없이 다음과 같은 형태로 개발을 함 [출처]("https://spring.io/guides/gs/accessing-data-jpa/")
+## 위에서 했던 처리 없이 다음과 같은 형태로 개발을 함
 ```java
 import java.util.List;
 import org.springFramework.data.repository.CrudRepository;
@@ -55,3 +53,8 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
 ```
 > Spring Data JPA는 동적으로 인터페이스를 구현하는 클래스를 만들어 내는 방식을 이용해서, 실제 클래스를 작성하지 않아도 <br/>
 > 자동으로 만들어지기 때문에 별도의 코드를 작성할 필요가 없다
+
+# 출처
+- [JPA와 ORM]("https://wiseyoun07.blog.me/221040082705")
+- [영속 컨텍스트와 엔티티 객체]("http://heowc.tistory.com/55")
+- [Spring Data JPA Code]("https://spring.io/guides/gs/accessing-data-jpa/")
