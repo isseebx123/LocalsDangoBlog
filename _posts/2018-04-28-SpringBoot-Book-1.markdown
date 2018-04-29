@@ -13,7 +13,7 @@ categories: Naver_Hackday_Ready
 ## 2. JPA(Java Persistence API)란?
 > Java를 이용해서 데이터를 관리하는 기법을 하나의 스펙으로 정리한 표준이다. JPA는 Java진영 에서 사용하는 ORM 기술 표준 이다. 즉 자발 기반에서 구현할 수 있는 ORM 표준 기술로 위에서 애기했던 SQL 작성 없이 객체를 데이터베이스에 직접 저장 할 수 있게 도와주고, 객체와 관계형 데이터베이스의 패러다임 불일치 문제도 해결해 준다.
 
-## JPA 구조에 대한 설명
+## 3. JPA 구조에 대한 설명
 1. 엔티티
 - 데이터베이스에서 데이터로 관리하는 대상. 예를 들어, '상품', '회사', '직원' 등과 같음
 - 데이터베이스에서는 엔티티를 위해서 일반적으로 테이블을 설계하고 데이터를 추가함
@@ -41,7 +41,7 @@ categories: Naver_Hackday_Ready
 4) 삭제(removed)
  - Database Side에서 지워졌지만 영속성 컨텍스트에서는 존재하는 상태입니다.
 
-# Spring Data JPA
+# 4. Spring Data JPA
 ## 위에서 했던 처리 없이 다음과 같은 형태로 개발을 함
 ```java
 import java.util.List;

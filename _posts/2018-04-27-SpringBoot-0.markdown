@@ -6,7 +6,7 @@ author: 이상현
 categories: Naver_Hackday_Ready
 ---
 
-# Hello Spring Boot
+# 1. Hello Spring Boot
 1. 인텔리제이 최신버젼 설치
 - 커뮤니티 or 낮은버젼은 스프링 프로젝트 생성 플러그인 별도설치 해야함.
 2. 프로젝트 생성

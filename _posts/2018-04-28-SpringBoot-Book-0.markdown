@@ -6,7 +6,7 @@ author: 이상현
 categories: Naver_Hackday_Ready
 ---
 
-# 스프링 부트 내의 빈 테스트
+# 1. 스프링 부트 내의 빈 테스트
 ```java
 @RestController
 public class HelloController {
@@ -27,7 +27,7 @@ public class HelloController {
 ```
 <pre> localhost:8080/hello를 통해 확인가능 </pre>
 
-# lombok 사용
+# 2. lombok 사용
 1. 설정
 - 인텔리제이 Find Action 키가 Ctrl+Shift+A
 - Plugins에서 lombok 설치
@@ -71,7 +71,7 @@ public SampleVO makesample() {
 ```
 <pre> 로 뜨는 것을 볼 수 있음 </pre>
 
-# 컨트롤러 테스트
+# 3. 컨트롤러 테스트
 ```java
 package com.github.io.springboot;
 
