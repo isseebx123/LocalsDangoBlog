@@ -11,9 +11,16 @@ categories: Naver_Hackday_Ready
 - 커뮤니티 or 낮은버젼은 스프링 프로젝트 생성 플러그인 별도설치 해야함.
 2. 프로젝트 생성
 - 필요한 라이브러리 설정: 롬북, Devtools, Web, Mysql, Redis, mybatis
-3. 실행
+3. 1) 실행
 - src/main/resources/static에 정적인 html,css,img 파일 등이 들어감
 - index.html이 있어야 localhost:8080으로 확인가능
+3. 2) 데스크탑에서 만든 프로젝트는 잘 되는데 노트북에서 만든 프로젝트는 에러 발생
+```java
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+```
+- 하면 되기는 하는데, 원인이 무엇일까?
+- 아마 데이터베이스관련 디펜던시 or Bean을 쓰는데 무엇이 없다고 하는 것 같음. 아마 driver.
+
 4. Hello controller 추가
 - src/main/java/com.github.io.springboot/api에 자바클래스 추가 <br/>
 
