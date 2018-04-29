@@ -15,7 +15,8 @@ categories: Naver_Hackday_Ready
 - src/main/resources/static에 정적인 html,css,img 파일 등이 들어감
 - index.html이 있어야 localhost:8080으로 확인가능
 4. Hello controller 추가
-- src/main/java/com.github.io.springboot/api에 자바클래스 추가
+- src/main/java/com.github.io.springboot/api에 자바클래스 추가 <br/>
+
 ```java
 package com.github.io.springboot.api;
 
@@ -31,7 +32,8 @@ public class HelloController {
     }
 }
 ```
-- localhost:8080/hello를 통해 확인가능
+> localhost:8080/hello를 통해 확인가능
+
 5. 크롬의 확장프로그램 live reload를 이용 (hotreload)
 - 이를 사용하려면 스프링부트 프로젝트에 devtools 디펜던시가 추가되어 있어야함.
 - 추가로 인텔리제이에서는 springloaded 디펜던시를 추가하고 설정해야 하는듯.
