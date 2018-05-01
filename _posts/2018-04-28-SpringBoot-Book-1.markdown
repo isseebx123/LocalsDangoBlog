@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Start SpringBoot 교재학습 1일차(챕터2)"
-date:   2018-04-29 13:30:00
+date:   2018-04-28 13:30:00
 author: 이상현
 categories: Naver_Hackday_Ready
 ---
