@@ -103,3 +103,17 @@ spring.jpa.database-platform=org.hibernate.dialect.MYSQL5InnoDBDialect
 <pre>
 이후 프로젝트를 실행하면 테이블을 생성하는 SQL의 동작을 확인 가능
 </pre>
+
+## Run으로 SQL이 동작하는 모습을 확인
+> org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource </br>
+<pre>
+  이라는 에러가 발생! 여러 시도를 해봤지만 아직 해결되지 않았음.
+  1. hibernate에 대한 디펜던시 버젼이 잘못되었거나
+  2. entitymanager에 대한 디펜던시가 없어서 그렇거나
+  3. spring boot의 버전이 높아졌는데 추가 설정을 해주지 않아서 그렇거나
+</pre>
+
+> Error creating bean with name 'org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration': Unsatisfied dependency expressed through constructor parameter 0;
+<pre>
+  스프링부트의 버전을 1.5.4로 바꾸니 위와 같은 에러가 발생하였음.
+</pre>
