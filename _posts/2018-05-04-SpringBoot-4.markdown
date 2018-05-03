@@ -20,7 +20,7 @@ categories: Naver_Hackday_Ready
   그래서 문득 메이븐을 통해 mvnw springboot:run으로 해야겠다는 생각이 들었지만, 위와 같은 오류가 발생하였다.
   성렬이형한테 물어보니 2가지를 해보라고 알려주셨다.
 </pre>
-1. pom에 다음을 추가
+1. pom에 다음을 추가 <br>
 ```js
   <repositories>
       <repository>
@@ -36,12 +36,11 @@ categories: Naver_Hackday_Ready
   </pluginRepositories>
 ```
 
-2. maven 빌드를 인텔리제이 오른쪽 상단에 있는 edit configuration을 눌러서 추가한 후 그것을 이용하기.
+2. maven 빌드를 인텔리제이 오른쪽 상단에 있는 edit configuration을 눌러서 추가한 후 그것을 이용하기. <br>
 <img src="{{ site.baseurl }}/assets/postImages/20180504/maven.jpg"> <br>
 
-3. 리액트와 관련된 플러그인 npm, babel 등이 설치되고 리액트가 thymeleaf html위에서 도는 것을 확인할 수 있었다.
-
-4. [깃허브]("https://github.com/phpbae/spring-boot-react")의 리드미파일을 참조하여 js파일, package.json, webpack.config.js등을 추가하였다.
+> 리액트와 관련된 플러그인 npm, babel 등이 설치되고 리액트가 thymeleaf html위에서 도는 것을 확인할 수 있었다. <br>
+> [깃허브]("https://github.com/phpbae/spring-boot-react")의 리드미파일을 참조하여 js파일, package.json, webpack.config.js등을 추가하였다. <br>
 
 # 2. React에서 CRUD를 해보자 !
 ## 리스트로 주면 어떤 식으로 받아지는지 확인
