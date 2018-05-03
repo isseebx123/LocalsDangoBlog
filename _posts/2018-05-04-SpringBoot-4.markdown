@@ -139,3 +139,19 @@ ReactDOM.render(
 	console.log를 찍어봤더니 아래와 같이 나왔다!
 </pre>
 <img src="{{ site.baseurl }}/assets/postImages/20180504/select.jpg"> <br>
+
+## 1. selectBoard
+```js
+componentDidMount() {
+		client({method: 'GET', path: '/selectBoard'}).done(response => {
+			this.setState({
+				boards: response.entity,
+				isLoading: true,
+			});
+		});
+	}
+```
+<pre>
+	response.entity로 state를 설정하고 나머지는 적절하게 이름 등을 조절하여 확인을 해봤다.
+</pre>
+<img src="{{ site.baseurl }}/assets/postImages/20180504/selectBoard.jpg"> <br>
