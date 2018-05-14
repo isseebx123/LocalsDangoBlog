@@ -277,8 +277,9 @@ const pNextToInputStyle = {
 
 # React에서 form은 어떻게?
 ## Controlled Component
+입력할때마다 state를 갱신해주는 것
 ## UnControlled Component
-
+submit 등 필요할 때만 state를 갱신하거나 값을 가져다 쓰는 것
 ---
 
 ## 참고사이트
