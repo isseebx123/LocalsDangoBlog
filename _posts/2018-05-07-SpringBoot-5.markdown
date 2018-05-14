@@ -8,7 +8,7 @@ categories: Naver_Hackday_Ready
 
 # 페이지를 분리해보자 !
 ## 구성
-1. Home
+### 1. Home <br/>
 ```js
 import React from 'react'
 
@@ -27,7 +27,7 @@ export default Home;
 <pre>
 
 </pre>
-2. SideBar
+### 2. SideBar<br/>
 ```js
 import React from 'react'
 
@@ -52,7 +52,7 @@ export default SideBar;
 <pre>
 
 </pre>
-3. BoardPage
+### 3. BoardPage <br/>
 ```js
 import React from 'react'
 
@@ -144,7 +144,7 @@ export default BoardPage;
 <pre>
 
 </pre>
-4. Time
+### 4. Time <br/>
 ```js
 import React from 'react'
 
