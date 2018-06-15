@@ -1,0 +1,113 @@
+---
+layout: post
+title:  "Android app dev - 1"
+date:   2018-06-15 18:12:00
+author: 이상현
+categories: Android
+---
+
+# 동적 어플리케이션 만들기
+## 간단한 인스타의 게시글 객체를 만들기
+```java
+public class PostItem {
+    boolean isUserLike;
+
+    int postLikeCount;
+
+    String userName;
+    String postImgUrl;
+    String postText;
+
+    public PostItem(boolean isUserLike, int postLikeCount, String userName, String postImgUrl, String postText) {
+        this.isUserLike = isUserLike;
+        this.postLikeCount = postLikeCount;
+        this.userName = userName;
+        this.postImgUrl = postImgUrl;
+        this.postText = postText;
+    }
+
+    public boolean isUserLike() {
+        return isUserLike;
+    }
+
+    public int getPostLikeCount() {
+        return postLikeCount;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getPostImgUrl() {
+        return postImgUrl;
+    }
+
+    public String getPostText() {
+        return postText;
+    }
+}
+```
+<pre>
+model이라는 패키지 안에 만들어주었다. 데이터만 있는 domain과 비슷하게 봐도 무방할 것 같다.
+이거 자체가 뷰는 아니니까. 뷰는 따로 xml로 만들어준다.
+</pre>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+    <TextView
+        android:textColor="#6200ea"
+        android:id="@+id/tv_UserName"
+        android:text="ansta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginLeft="8dp"
+        android:id="@+id/tv_PostText"
+        android:text="test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+```
+<pre>
+많은 부분이 생략되긴 했지만 이해하는데 어려움은 없을 것 같다.
+현재 text는 test용으로 들어가 있는 것이다.
+</pre>
+
+```java
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    LinearLayout llScrollParent = findViewById(R.id.ll_scroll);
+    ArrayList<PostItem> postItems = new ArrayList<>();
+
+    for (int i = 0; i < 5; i++) {
+        PostItem postItem = new PostItem(true, 125, "irene" + i, "https://i.ytimg.com/vi/R06wLP3lwjE/maxresdefault.jpg", "");
+        postItems.add(postItem);
+
+        View view = View.inflate(this, R.layout.post_item, null);
+
+        TextView tvUserName = view.findViewById(R.id.tv_UserName);
+        TextView tvPostText = view.findViewById(R.id.tv_PostText);
+
+        tvUserName.setText(postItem.getUserName());
+        tvPostText.setText(postItem.getPostText());
+
+        llScrollParent.addView(view);
+    }
+}
+```
+<pre>
+가장 중요한 뷰를 설정하는 과정이다.
+특히 for문에서 View.inflate를 통해 새로운 뷰를 만드는 과정에 주목하자.
+빈 껍데기를 만드는 것으로 봐도 괜찮을 것 같다.
+해당 껍데기에서 findViewById로 해서 찾으므로 xml에서는 동일한 id를 써도 괜찮다!
+</pre>
+
+## ViewHolder
+1. findViewById는 생각보다 댓가가 큰 메소드이다.
+2. 그래서 미리 View들을 다 찾아놓고 캐시해둔 뒤에 끊임없이 재활용하기 위해서 만들어진 것이다.

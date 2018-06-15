@@ -1,0 +1,145 @@
+---
+layout: post
+title:  "Android app dev - 1"
+date:   2018-06-15 15:37:00
+author: 이상현
+categories: Android
+---
+
+# Android 설치
+1. android studio 설치
+2. jdk 설치
+3. sdk 설치
+
+# Hello world
+1. 새 프로젝트를 클릭하여 프로젝트를 만든다.
+2. 안드로이드 버전을 선택한다.
+- 버전 선택하는 곳에서 아래 쪽의 help를 누르면 버전 별로 얼마의 사용자가 있는지 확인가능하다.
+3. R이 빨간 줄 뜨는 경우 gradle을 sync한다.
+4. adb를 run하여 확인한다.
+- usb디버깅으로 스마트폰에서 확인도 가능하다.
+
+## 유의사항
+1. R은 res를 의미한다.
+2. layout에서 프리뷰를 확인하려면 빌드에 성공해야한다.
+3. manifest에서 액티비티의 설정이 가능하다.
+4. 프로젝트 만들자 마자 뜨던 에러
+> Conflict with dependency 'com.android.support:support-annotations' in project ':app'. Resolved versions for app (26.1.0) and test app (27.1.1) differ.
+<pre>[해결방법]("https://stackoverflow.com/questions/50117626/conflict-with-dependency-com-android-supportsupport-annotations-in-project")</pre>
+
+# Fragment
+
+## 정리
+1. weight를 사용하여 꽉차게 분리하려면 width="0dp"를 주어야 한다.
+2. fragment에서.. linear에서 방향을 수직으로 주고 height에 0dp, weight를 설정한다.
+```xml
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.sanghyunlee.class5e_fragment.LeftFragment">
+
+    <View
+        android:background="#ff4242"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+    <View
+        android:background="#42ff6b"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+    <View
+        android:background="#181cff"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+</LinearLayout>
+```
+3. fragment는 액티비티 등록을 하지 않아도 된다.
+4. fragment에는 id를 부여해야 한다.
+```xml
+<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+		<fragment
+				android:id="@+id/fragment_left"
+				android:name="com.example.sanghyunlee.class5e_fragment.LeftFragment"
+				android:background="#a7ffa5"
+				android:layout_weight="1"
+				android:layout_width="0dp"
+				android:layout_height="match_parent">
+		</fragment>
+		<FrameLayout
+				android:background="@color/colorAccent"
+				android:layout_weight="2"
+				android:layout_width="0dp"
+				android:layout_height="match_parent"></FrameLayout>
+</LinearLayout>
+```
+5. onClick 처리
+```java
+public class LeftFragment extends Fragment implements View.OnClickListener{
+}
+```
+```java
+view.findViewById(R.id.fragment_red).setOnClickListener(this);
+view.findViewById(R.id.fragment_blue).setOnClickListener(this);
+view.findViewById(R.id.fragment_green).setOnClickListener(this);
+```
+<pre>OnClickLinster implement하고 this를 걸어줌.</pre>
+
+# Viewpager-Tablayout
+
+## 설정
+1. gradle에 Tablayout을 위한 라이브러리를 추가한다.
+- implementation 'com.android.support:design:26.1.0'
+- 예전에는 compile이었는데 버전이 올라가면서 implementation으로 문법이 바뀌었음.
+- version은 일관성 있게 해야함. 현재 모두 26.x.x.
+- version 안맞으면 빌드에러나거나, 빌드에러 나지 않지만 런타임에러 난다.
+2. layout xml에서 Tablayout은 자동완성해주지 않으니 docs에서 복붙해서 쓴다.
+
+## 유의사항
+1. GreenFragment를 생성시 옵션 2개 체크하고 했더니 제대로 되지 않는다.
+2. 스마트폰에서도 앱을 켜놓기만 하면 reload 비슷한 기능을 사용가능하다.
+
+# SharedPreference
+```java
+public class MainActivity extends AppCompatActivity {
+
+    public static final String SHARED_PREF_FIRST_USER_KEY = "1000";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        TextView textView = findViewById(R.id.hello_text);
+
+        SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+        int firstUser = sharedPreferences.getInt(SHARED_PREF_FIRST_USER_KEY, -1);
+
+        if(firstUser == 1) {
+            textView.setText(getString(R.string.hello_user));
+        }
+        else if(firstUser == -1){
+            textView.setText(getString(R.string.hello_first));
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt(SHARED_PREF_FIRST_USER_KEY, 1);
+            editor.commit();
+        }
+    }
+}
+```
+<pre>주로 설정값에 쓰인다고 한다.</pre>
+
+# String Resource
+1. string xml에서 입력
+2. open editor-지구본모양-나라클릭
+3. 테이블에 입력
+4. 쓸때는 getString(R.string.#####)으로 쓴다.
