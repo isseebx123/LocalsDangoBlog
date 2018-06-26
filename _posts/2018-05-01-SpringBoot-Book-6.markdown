@@ -6,7 +6,7 @@ author: 이상현
 categories: Springboot
 ---
 
-# 연관관계 설정
+# 연관관계 설정 (계속..)
 ## 기본적인 연관관계 설정방법 (ManyToOne)
 ```java
 @Getter
