@@ -1,0 +1,26 @@
+---
+layout: post
+title:  "Webpack 1일차 - npm, webpack"
+date:   2018-06-26 22:13:00
+author: 이상현
+categories: Webpack
+---
+
+# npm 설명
+## install --save와 --save-dev
+<p>
+--save는 앱 구동시에 필요한 것들이다. ex) react, vue <br/>
+--save-dev는 개발시에 필요한 것들이다. ex) live reload, dev tools, testing tools <br/>
+--save를 하면 package.json에 디펜던시가 추가된다.
+</p>
+
+# webpack.config.js
+## entry, output
+<img src="{{ site.baseurl }}/assets/postImages/20180626/entry.png"> <br>
+<p>
+entry는 번들링할 파일의 시작점이고, output은 번들링해서 나올 결과물의 이름 위치 등이다. </br>
+entry를 위와 같이 상황에 맞게 설정할 수 있다.
+</p>
+
+## output name options
+<img src="{{ site.baseurl }}/assets/postImages/20180626/output.png"> <br>

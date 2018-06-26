@@ -1,0 +1,142 @@
+---
+layout: post
+title:  "Webpack 1일차"
+date:   2018-06-26 21:03:00
+author: 이상현
+categories: Webpack
+---
+
+# 개발환경
+<p>Atom의 terminal이 안되서 인텔리제이로 한다.</p>
+
+# Webpack은 왜 쓰나요?
+<img src="{{ site.baseurl }}/assets/postImages/20180626/basic.png"> <br>
+<p>자바스크립트 프로젝트에서는 여러가지 모듈(html, js, css)이 연결되어 있는데, 이들을 통합하여 관리해준다. 예를 들면, 효율적으로 동작할 수 있도록 번들링을 해주고 자바스크립트의 모듈화문제(전역변수의 중복 문제 등)를 해결해주는 등의 이점이 있다.</p>
+
+# Webpack 설치
+<p>npm install i webpack-cli -g로 설치한다. webpack-cli로 하는 이유는 4.x대 버전으로 올라가면서 바뀌었다고 한다.</p>
+
+# Getting-started (Webpack 시작하기)
+## 모듈사용하기
+```js
+// index.html
+<html>
+  <head>
+    <title>webpack 2 demo</title>
+    <script src="https://unpkg.com/lodash@4.16.6"></script>
+  </head>
+  <body>
+    <script src="app/index.js"></script>
+  </body>
+</html>
+```
+```js
+// index.js
+function component () {
+  var element = document.createElement('div');
+
+  /* lodash is required for the next line to work */
+  element.innerHTML = _.join(['Hello','webpack'], ' ');
+
+  return element;
+}
+
+document.body.appendChild(component());
+```
+<p>
+1. getting-started에 들어가서 npm init -y를 한다. <br/>
+- npm init만 하면 프로젝트 정보를 하나씩 물어보고 -y로 하면 디폴트 정보로 한다. <br/>
+2. 그러면 package.json이 생기면서 디폴트값이 설정된다. <br/>
+3. html과 js를 복사한다. <br/>
+4. html을 실행해본다.
+</p>
+
+```js
+// index.html
+<html>
+  <head>
+    <title>webpack 2 demo</title>
+  </head>
+  <body>
+    <script src="app/index.js"></script>
+  </body>
+</html>
+```
+```js
+// index.js
+import _ from 'lodash';
+
+function component () {
+  var element = document.createElement('div');
+
+  /* lodash is required for the next line to work */
+  element.innerHTML = _.join(['Hello','webpack'], ' ');
+
+  return element;
+}
+
+document.body.appendChild(component());
+```
+<p>
+	1. npm i lodash --save로 save옵션을 통해 모듈을 로컬에 다운로드한다.<br/>
+  2. 그러면 html에 있던 lodash를 불러오는 스크립트는 필요없어진다.
+  3. 대신 js에서 import로 불러온다.
+</p>
+
+## 번들링하기
+### 에러 발생
+<p>
+webpack app/index.js dist/bundle.js을 하면 (webpack 번들링할대상파일 번들링결과파일) 번들링을 한다. <br/>
+그런데.. webpack을 찾을 수 없다고 에러가 뜬다. 분명 webpack-cli로 설치하라고 해서 했는데..? <br/>
+그래서 이번에는 기존처럼 npm i webpack -g으로 설치해보았다. <br/>
+그랬더니 webpack@4.12.1 버전이 설치되었고 다시한번 시도했더니 또 다음과 같은 에러가 떴다. <br/>
+ERROR in multi ./app/index.js dist/bundle.js <br/>
+Module not found: Error: Can't resolve 'dist/bundle.js' in 'C:\Users\Sanghyun <br/> Lee\Desktop\webpack-study\getting-started' <br/>
+ @ multi ./app/index.js dist/bundle.js <br/>
+WARNING in configuration
+The 'mode' option has not been set, webpack will fallback to 'production' for this value. Set 'mode' option to 'development'
+ or 'production' to enable defaults for each environment.
+You can also set it to 'none' to disable any default behavior. Learn more: https://webpack.js.org/concepts/mode/
+</p>
+
+### 원인 해결
+<p>
+webpack-cli --entry ./app/index.js --output ./dist/bundle.js <br/>
+일단 webpack 4.x이상부터는 webpack과 webpack-cli 모두를 설치해야한다. <br/>
+그리고 warning을 보아하니 모드를 설정해주어야 하기에, development모드로 설정해주어야 한다. <br/>
+마지막으로 help를 통해 확인하니 --entry와 --output으로 옵션을 주어야하는 것 같다. 결국 혼자 해결했음..
+</p>
+
+### 번들 불러오기
+```js
+<html>
+<head>
+  <title>webpack 2 demo</title>
+</head>
+<body>
+<!--<script src="app/index.js"></script>-->
+<script src="dist/bundle.js"></script>
+</body>
+</html>
+```
+<p>
+번들 파일을 html에서 불러와서 크롬 개발자도구로 확인해보면 번들링된 것을 불러옴으로써 한번에 bundle.js라는 곳에 모아서 보여주므로 효율적으로 동작한다.(요청이 한번에 모아진다?)
+</p>
+
+### 웹팩 설정하기
+```js
+// webpack.config.js
+// `webpack` command will pick up this config setup by default
+var path = require('path');
+
+module.exports = {
+  entry: './app/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+};
+```
+<p>
+복잡한 구조의 웹팩 설정을 위해서는 webpack.config.js를 만들어서 별도로 설정을 해주어야 한다.
+</p>
