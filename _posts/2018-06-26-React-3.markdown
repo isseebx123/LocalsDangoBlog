@@ -1,0 +1,24 @@
+---
+layout: post
+title:  "React eslint와 prettier"
+date:   2018-06-28 17:13:00
+author: 이상현
+categories: React
+---
+
+# eslint 해보기
+<p>[참고블로그]("http://jojoldu.tistory.com/230")</p>
+
+## air-bnb eslint?
+<p>에어비앤비에서 쓰는 eslint 규약이다.</p>
+
+## 설치하기
+<p>
+1. eslint를 사용할 에디터에서 eslint-plugin을 설치한다. <br/>
+2. 인텔리제이에서는 Code Quality Tools에서 eslint를 enable시킨다. <br/>
+3. 필요한 패키지를 --save-dev로 설치한다. <br/>
+- eslint
+- eslint-plugin-import
+- ...
+4. eslint에 맞게 indent, space등의 옵션을 인텔리제이의 code style에서 변경한다.
+</p>
