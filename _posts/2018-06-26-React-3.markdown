@@ -22,3 +22,38 @@ categories: React
 - ...
 4. eslint에 맞게 indent, space등의 옵션을 인텔리제이의 code style에서 변경한다.
 </p>
+
+# prettier 해보기
+<p>자동 정렬을 도와주는 툴이다. 인텔리제이 플러그인으로 설치 후, --save-dev prettier-eslint를 한다.</p>
+
+## prettier-eslint 문제점
+<p>cannot read property 'sync' ... 라는 에러가 뜬다. 찾아봤더니 prettier과 eslint를 함께쓰는 것은 권장하지 않는다고 되어있다. <br/>
+eslint에서 규약을 주고 그 규약에 맞게 prettier가 고쳐주면 좋다고 생각했는데, prettier는 대략적인 포맷을 맞춰주고 eslint는 버그나 잘못된 사용법을 잡아준다는 생각으로 사용하자.</p>
+
+## 결국에는 어떻게 사용해야하는가
+<p>
+  기본 eslint, prettier를 설치후, eslint는 .eslintrc에, prettier는 prettier.config.js에 환경설정을 하고 사용하면 되겠다. <br/>
+  [prettier config options]("http://json.schemastore.org/prettierrc") <br/>
+  이후 ctrl+shift+p를 하면 prettier가 동작하여 리포맷을 한다.
+</p>
+
+# 몇가지 해보면서 보여졌던 warning들
+## must use destructuring ...
+```js
+<input type="button" value="취소" onClick={() => {this.props.closePopupWindow()}} />
+<input type="button" value="취소" onClick={closePopupWindow} />
+```
+<p>this.props로 접근을 하면 저당시에는 바뀌어 있을수도 있으므로 따로 렌더의 리턴이전애 const로 따로 빼주고 불러온다.</p>
+
+## must put on a new line
+```js
+<label>
+  그룹
+  <input type="text" placeholder="그룹" />
+</label>
+<label>
+  {'그룹'}
+  <input type="text" placeholder="그룹" />
+</label>
+```
+<p>string을 quote와 괄호로 감싸주니 해결되었다. 맞는 방법인지는 잘모르겠다.</p>
