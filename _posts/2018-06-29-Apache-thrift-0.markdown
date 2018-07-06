@@ -253,6 +253,42 @@ client.add(1,1, function(err, response) {
 });
 ```
 <p>그러고 index html의 body에 script를 삽입해서 시도를 해본다.</p>
+
 ```js
   <script src="../src/client.js"></script>
 ```
+<img src="{{ site.baseurl }}/assets/postImages/20180629/error.png">
+<p>
+  스크립트를 강제로 넣었더니 require을 인식하지 못한다. react에서 불러오는 방식으로 해본다.
+</p>
+
+```js
+import React, {Component} from 'react';
+import thrift from 'thrift';
+import assert from 'assert';
+const ArithmeticService = require('./gen-nodejs/ArithmeticService');
+
+var transport = thrift.TBufferedTransport;
+var protocol = thrift.TBinaryProtocol;
+
+const Client = () => {
+  var connection = thrift.createConnection("localhost", 9090, {
+    transport: transport,
+    protocol: protocol
+  });
+
+  connection.on('error', function (err) {
+    assert(false, err);
+  });
+
+  var client = thrift.createClient(ArithmeticService, connection);
+
+  client.add(1, 1, function (err, response) {
+    console.log("1+1=" + response);
+    return (<span>resopnse</span>);
+  });
+}
+
+export default Client;
+```
+<p></p>
